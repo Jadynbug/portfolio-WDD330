@@ -14,4 +14,3 @@ function listLinks () {
     }
     document.getElementById("link_list").innerHTML = fullContent;
 }
-listLinks();
