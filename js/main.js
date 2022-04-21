@@ -9,7 +9,7 @@ function listLinks () {
     var len = links.length;
     var fullContent = "";
     for (var i = 0; i < len; i++) {
-        var content = '<li><a href="' + links[i][label] + '">' + links[i][url]
+        var content = '<li><a href="' + links[label] + '">' + links[url]
         fullContent += content;
     }
     document.getElementById("link_list").innerHTML = fullContent;
