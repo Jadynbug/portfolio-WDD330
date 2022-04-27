@@ -16,7 +16,8 @@
                     const response = ask(question);
                     check(response, answer);
                 }
-                gameOver();
+
+                gameOver(score);
             }
 
             function ask (question) {
@@ -33,7 +34,7 @@
 
             }
 
-            function gameOver() {
+            function gameOver(score) {
                 alert(`Game over! You scored ${score} point${score !== 1 ? 's': ''}`);
             }
 
