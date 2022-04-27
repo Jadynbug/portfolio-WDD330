@@ -8,17 +8,30 @@
                 ["What is Wonder Woman's real name?", "Diana Prince"],
                 ["What is Batman's real name?", "Bruce Wayne"]
             ];
-            let score = 0;
-            for (const [question, andswer] of quiz) {
-                const response = prompt(question);
+
+            function start (quiz) {
+                let score = 0;
+
+                for (const [question, andswer] of quiz) {
+                    const response = ask(question);
+                    check(response, answer);
+                }
+                gameOver();
+            }
+            function check(response, answer) {
                 if (response === andswer) {
                     alert("Correct!");
                     score++
                 } else {
                     alert(`Wrong! The correct answer was ${answer}`);
                 }
+
             }
-            alert(`Game over! You scored ${score} point${score !== 1 ? 's': ''}`);
+            function gameOver() {
+                alert(`Game over! You scored ${score} point${score !== 1 ? 's': ''}`);
+
+            }
+            start(quiz);
         </script>
     </head>
     <body>
