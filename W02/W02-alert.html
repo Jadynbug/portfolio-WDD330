@@ -14,28 +14,27 @@
 
                 for (const [question, answer] of quiz) {
                     const response = ask(question);
-                    score = check(response, answer, score);
+                    check(response, answer);
                 }
 
                 gameOver(score);
-            }
-
-            function ask (question) {
-                return prompt(question);
-            }
-
-            function check(response, answer, score) {
-                if (response === answer) {
-                    alert("Correct!");
-                    score++
-                } else {
-                    alert(`Wrong! The correct answer was ${answer}`);
+        
+                function ask (question) {
+                    return prompt(question);
                 }
-                return score;
-            }
 
-            function gameOver(score) {
-                alert(`Game over! You scored ${score} point${score !== 1 ? 's': ''}`);
+                function check(response, answer) {
+                    if (response === answer) {
+                        alert("Correct!");
+                        score++
+                    } else {
+                        alert(`Wrong! The correct answer was ${answer}`);
+                    }
+                }
+
+                function gameOver() {
+                    alert(`Game over! You scored ${score} point${score !== 1 ? 's': ''}`);
+                }
             }
 
             start(quiz);
