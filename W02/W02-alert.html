@@ -12,7 +12,7 @@
             function start (quiz) {
                 let score = 0;
 
-                for (const [question, andswer] of quiz) {
+                for (const [question, answer] of quiz) {
                     const response = ask(question);
                     check(response, answer);
                 }
@@ -24,7 +24,7 @@
             }
 
             function check(response, answer) {
-                if (response === andswer) {
+                if (response === answer) {
                     alert("Correct!");
                     score++
                 } else {
@@ -32,7 +32,7 @@
                 }
 
             }
-            
+
             function gameOver() {
                 alert(`Game over! You scored ${score} point${score !== 1 ? 's': ''}`);
             }
