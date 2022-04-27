@@ -14,7 +14,7 @@
 
                 for (const [question, answer] of quiz) {
                     const response = ask(question);
-                    check(response, answer);
+                    score = check(response, answer, score);
                 }
 
                 gameOver(score);
@@ -24,14 +24,14 @@
                 return prompt(question);
             }
 
-            function check(response, answer) {
+            function check(response, answer, score) {
                 if (response === answer) {
                     alert("Correct!");
                     score++
                 } else {
                     alert(`Wrong! The correct answer was ${answer}`);
                 }
-
+                return score;
             }
 
             function gameOver(score) {
