@@ -16,8 +16,8 @@
 
         <script>
             function write() {
-                let response = toString(document.getElementById("input_1").value);
-                document.getElementById("output_1").innerHTML = response;
+                let response = document.getElementById("input_1").value;
+                document.getElementById("output_1").innerHTML += response;
             }            
         </script>
     </body>
