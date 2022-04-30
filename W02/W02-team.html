@@ -86,14 +86,14 @@
                let x = callback(id_1);
                let y = callback(id_2);
                let answer = (x,y) => x * y;
-               callback2('output_3', answer);
+               callback2('output_3', answer());
            }
 
            function minus(id_1, id_2, callback, callback2) {
                 let x = callback(id_1);
                 let y = callback(id_2);
                 let answer = function () {return x - y};
-                callback2('output_4', answer);    
+                callback2('output_4', answer());    
            }
         </script>
     </body>
