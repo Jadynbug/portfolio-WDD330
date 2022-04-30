@@ -39,7 +39,11 @@
             }
 
             function display(id, some) {
-                document.getElementById(toString(id)).innerHTML = some;
+                if (some != null || some != undefined) {
+                    document.getElementById(toString(id)).innerHTML = some;
+                } else {
+                    document.getElementById(toString("id")).innerHTML = "Please try again";
+                }
             }
 
             function write(id, callback, callback2) {
