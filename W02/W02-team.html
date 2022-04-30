@@ -9,16 +9,57 @@
     <body>
         <h1>WDD330 Portfolio</h1>
         
-        <input id="input_1" type="text"><button onclick="write()">Push</button>
+        <input id="input_1" type="text"><button onclick="write('input_1', fetch_nan, display)">Write</button>
         <div id="output_1"></div>
+
+        <input id="input_2" type="text"><button onclick="number('input_2', fetch_num, sum, display)">Add</button>
+        <div id="output_2"></div>
 
         <footer><a href="../index.html">Home</a></footer>
 
         <script>
-            function write() {
-                let response = document.getElementById("input_1").value;
-                document.getElementById("output_1").innerHTML += response;
-            }            
+            function fetch_nan(id) {
+                let value = document.getElementById(toString(id)).value;
+                if (isNaN(value)) {
+                    return value;
+                }
+                else {
+                    return "Please enter a word";
+                }
+            }
+
+            function fetch_num(id) {
+                let value = document.getElementById(id).value;
+                if (!isNaN(value)) {
+                    return value;
+                }
+                else {
+                    return "Please enter a number";
+                }
+            }
+
+            function display(id, some) {
+                document.getElementById(toString(id)).innerHTML = some;
+            }
+
+            function write(id, callback, callback2) {
+                let response = callback(id);
+                callback2("output_1", response);
+            }   
+            
+            function sum(num) {
+                let sum = 0;
+                for (let i = 0; i < num; i++) {
+                    sum += i;
+                }
+                return sum;
+            }
+
+           function number(id, callback, callback2, callback3) {
+                let value = callback(id);
+                let number = callback2(num);
+                callback3("output_2", number);
+           }
         </script>
     </body>
 </html>
