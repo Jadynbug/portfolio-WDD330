@@ -41,6 +41,8 @@
             function display(id, some) {
                 if (some != null || some != undefined) {
                     document.getElementById(toString(id)).innerHTML = some;
+                } else if (id == null || id == undefined) {
+                    document.getElementById("input_1").innerHTML = "Error";
                 } else {
                     document.getElementById(toString("id")).innerHTML = "Please try again";
                 }
