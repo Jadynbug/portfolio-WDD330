@@ -86,7 +86,7 @@
                let x = callback(id_1);
                let y = callback(id_2);
                let answer = (x,y) => x * y;
-               callback2('output_3', answer());
+               callback2('output_3', answer(x, y));
            }
 
            function minus(id_1, id_2, callback, callback2) {
