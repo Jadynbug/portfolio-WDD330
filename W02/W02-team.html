@@ -56,12 +56,16 @@
             function sum(num) {
                 let sum = 0;
                 let problem = " ";
-                let number = parseInt(num => num + 1);
+                let number = num + 1;
                 for (let i = 0; i < number; i++) {
                     sum += i;
-                    problem += i + " + "
+                    if (number = num) {
+                        problem += i;
+                    } else {
+                        problem += i + " + ";
+                    }
                 }
-                problem += "= " + sum;
+                problem += " = " + sum;
                 return problem;
             }
 
