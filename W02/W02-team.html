@@ -55,10 +55,13 @@
             
             function sum(num) {
                 let sum = 0;
+                let problem = " ";
                 for (let i = 0; i < num; i++) {
                     sum += i;
+                    problem += i + " "
                 }
-                return sum;
+                problem += "= " + sum;
+                return problem;
             }
 
            function number(id, callback, callback2, callback3) {
