@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width:device-width, initial-scale:1.0">
+        <link rel="stylesheets" href="portfolio-WDD330\main.css">
+        
+    </head>
+    <body>
+        <h1>WDD330 Portfolio</h1>
+        <h2>Calculator</h2>
+        
+
+       
+
+        <footer><a href="../index.html">Home</a></footer>
+
+        <script>
+            let Calculator = {
+                read() {
+                    let x = prompt("Enter a number");
+                    let y = prompt("Enter a second number");
+                    let a = multi(x, y);
+                    let b = sum(x, y);
+                    alert(x + " * " + y + " = " + a);
+                    alert(x + " + " + y + " = " + b);
+                },
+                multi(x, y) {
+                    return x*y;
+                },
+                sum(x, y) {
+                    return x+y;
+                }
+            }
+            Calculator.read();
+        </script>
+    </body>
+</html>
