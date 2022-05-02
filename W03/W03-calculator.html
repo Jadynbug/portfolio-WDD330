@@ -17,6 +17,12 @@
 
         <script>
             let Calculator = {
+                multi(x, y) {
+                    return x*y;
+                },
+                sum(x, y) {
+                    return x+y;
+                },
                 read() {
                     let x = prompt("Enter a number");
                     let y = prompt("Enter a second number");
@@ -24,12 +30,6 @@
                     let b = sum(x, y);
                     alert(x + " * " + y + " = " + a);
                     alert(x + " + " + y + " = " + b);
-                },
-                multi(x, y) {
-                    return x*y;
-                },
-                sum(x, y) {
-                    return x+y;
                 }
             }
             Calculator.read();
