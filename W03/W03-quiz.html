@@ -32,7 +32,7 @@
                 info: document.getElementById('info'),
                 render(target, content, attributes) {
                     for (const key in attributes) {
-                        target.setAttributes(key, attributes[key]);
+                        target.setAttribute(key, attributes[key]);
                     }
                     target.innerHTML = content;
                 }
