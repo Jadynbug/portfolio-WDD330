@@ -10,10 +10,34 @@
         <h1>WDD330 Portfolio</h1>
         <h2>Quiz</h2>
         
+        <section class="dojo">
+            <div class="quiz-body">
+                <header>
+                    <div id="score">Score: <strong>0</strong></div>
+                    <h2>Quiz Ninja!</h2>
+                </header>
+            </div>
+            <div id="question"></div>
+            <div id="result"></div>
+            <div id="info"></div>
+        </section>
 
 
         <footer><a href="../index.html">Home</a></footer>
         <script>
+            const view = {
+                score: document.querySelector('#score strong'),
+                question: document.getElementById('question'),
+                result: document.getElementById('result'),
+                info: document.getElementById('info'),
+                render(target, content, attributes) {
+                    for (const key in attributes) {
+                        taget.setAttributes(key, attributes[key]);
+                    }
+                    target.innerHTML = content;
+                }
+            }
+
             const quiz = [
                 { name: "Superman", realName: "Clark Kent" },
                 { name: "Wonder Woman", realName: "Diana Prince" },
@@ -35,6 +59,7 @@
 
                 ask() {
                     const question = `what is ${this.question.name}'s real name?`;
+                    view.render(view.question, question);
                     const response = prompt(question);
                     this.check(response);
                 },
@@ -42,6 +67,7 @@
                 check(response) {
                     const answer = this.question.realName;
                     if (response === answer) {
+                        view.render(view.result, 'Correct!', {'class': "correct"});
                         alert("correct!");
                         this.score++;
                     } else {
