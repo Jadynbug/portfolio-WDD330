@@ -12,7 +12,47 @@
         
 
         <ol>
+            <li><p>
+                JS objects look like Python dictionaries.<br>
+                <pre>
+                    let object = {
+                        key: value,
+                        key: value
+                    }
+                </pre>
+            </p></li>
+            <li><p>
+                You can give objects functions.<br>
+                <pre>
+                    let object = {
+                        key: value,
+                        key: value,
+    
+                        function() {do thing;}
+                    }
+                </pre>
+                Then call those functions<br>
+                object.function();
+            </p></li>
+            <li><p>
+                Try to avoid using "this" instead use the name of the object. JS "this" is not
+                bound like other languages.
+            </p><p>
+                Exceptions being:
+                <pr>
+                    let object_1 = {name: "John"};
+                    let object_2 = {name: "Steve"};
 
+                    function sayHi() {alert(this.name);}
+
+                    object_1.f = sayHi;
+                    object_2.f = sayHi;
+                </pr>
+                By defining the function outside of the objects it can now work with either object 
+                due to JS's ability to use context.
+            </p><p>
+                However, this means that the function will not work unless paired with an object. On it's own it will error.
+            </p></li>
             
         </ol>
 
