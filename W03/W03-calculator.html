@@ -17,22 +17,26 @@
 
         <script>
             let Calculator = {
-                multi(x, y) {
-                    return x*y;
+
+                multi() {
+                    let a = x*y;
+                    return x + " * " + y + " = " + a;
                 },
-                sum(x, y) {
-                    return x+y;
+                sum() {
+                    let b = x+y;
+                    return x + " + " + y + " = " + b;
                 },
                 read() {
                     let x = prompt("Enter a number");
                     let y = prompt("Enter a second number");
-                    let a = calculator.multi(x, y);
-                    let b = calbulator.sum(x, y);
-                    alert(x + " * " + y + " = " + a);
-                    alert(x + " + " + y + " = " + b);
-                }
+                    Calculator.x = x;
+                    Calculator.y = y;   
+                }                
             }
+            
             Calculator.read();
+            alert(Calculator.multi());
+            alert(Calculator.sum());
         </script>
     </body>
 </html>
