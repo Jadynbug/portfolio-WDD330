@@ -9,6 +9,16 @@
   <body>
     <h1>WDD330 Portfolio</h1>
     <h2>Team Activity</h2>
+    
+    <div id="output-1"></div>
+    <div id="output-2"></div>
+    <div id="output-3"></div>
+    <div id="output-4"></div>
+    <div id="output-5"></div>
+    <div id="output-6"></div>
+    <div id="output-7"></div>
+    <div id="output-8"></div>
+
 
     <footer><a href="../index.html">Home</a></footer>
     <script>
@@ -76,28 +86,81 @@
         'Blake, William'
       ];
 
+      const o1 = document.getElementById('output_1');
+      const o2 = document.getElementById('output_2');
+      const o3 = document.getElementById('output_3');
+      const o4 = document.getElementById('output_4');
+      const o5 = document.getElementById('output_5');
+      const o6 = document.getElementById('output_6');
+      const o7 = document.getElementById('output_7');
+      const o8 = document.getElementById('output_8');
+
+
       // Array.prototype.filter()
       // 1. Filter the list of inventors for those who were born in the 1500's
+        const fifteen = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year < 1600));
+        console.table(fifteen);
 
       // Array.prototype.map()
       // 2. Give us an array of the inventors' first and last names
+        const fullNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+        console.log(fullNames);
+
 
       // Array.prototype.sort()
       // 3. Sort the inventors by birthdate, oldest to youngest
+        const ordered = inventors.sort((a, b) => a.year > b.year);
+        console.table(ordered);
 
       // Array.prototype.reduce()
       // 4. How many years did all the inventors live?
+      function reduceYears (list) {
+        let totalYears = inventors.reduce((total, inventor) => {return total + (inventor.passed - inventor.year);}, 0)
+        document.getElementById('output-4').innerHTML += totalYears;
+        console.log(totalYears);
+      }
 
       // 5. Sort the inventors by years lived
+        const oldest = inventors.sort(function(a, b) {
+        const lastInventor = a.passed - a.year;
+        const nextInventor = b.passed - b.year;
+        return lastInventor > nextInventor ? -1 : 1;
+        });
+        console.table(oldest);
 
       // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
       // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
       // goto the link above and open the console. Paste the following two lines in.  That will create a list of links in memory that you can reference through the console. Use that list to finish the problem.
       // const category = document.querySelector('.mw-category');
       // const links = Array.from(category.querySelectorAll('a'));
+      const blvds = ['Boulevards of Paris', 'City walls of Paris', 'Thiers wall', 'Wall of Charles V', 'Wall of Philip II Augustus', 'City gates of Paris', "Haussmann's renovation of Paris", 'Boulevards of the Marshals', 'Boulevard Auguste-Blanqui',
+      'Boulevard Barbès', 'Boulevard Beaumarchais', "Boulevard de l'Amiral-Bruix", 'Boulevard Mortier',
+      'Boulevard Poniatowski', 'Boulevard Soult', 'Boulevard des Capucines', 'Boulevard de la Chapelle',
+      'Boulevard de Clichy', 'Boulevard du Crime', "Boulevard du Général-d'Armée-Jean-Simon", 'Boulevard Haussmann',
+      "Boulevard de l'Hôpital", 'Boulevard des Italiens', 'Boulevard Lefebvre', 'Boulevard de la Madeleine',
+      'Boulevard de Magenta', 'Boulevard Malesherbes', 'Boulevard Marguerite-de-Rochechouart', 'Boulevard Montmartre',
+      'Boulevard du Montparnasse', 'Boulevard Raspail', 'Boulevard Richard-Lenoir', 'Boulevard Saint-Germain',
+      'Boulevard Saint-Michel', 'Boulevard de Sébastopol', 'Boulevard de Strasbourg', 'Boulevard du Temple',
+      'Boulevard Voltaire', 'Boulevard de la Zone'  ]
+
+      const b = blvds.filter(blvd => blvd.includes('de'));
+      console.log(b);
+
 
       // 7. sort Exercise
       // Sort the people alphabetically by last name
+        const lastNameSort = inventors.sort((a,b) => {
+            if (a.last < b.last){
+            return -1;
+            }
+            else if (a.last > b.last){
+            return 1;
+            }
+            else {
+            return 0;
+            }
+        })
+        console.table(lastNameSort);
 
       // 8. Reduce Exercise
       // Sum up the instances of each of these
@@ -117,6 +180,19 @@
         'car',
         'truck'
       ];
+      const reducedData = data.reduce(function (obj, item) {
+        if (!obj[item]) {
+          obj[item] = 0;
+        }
+        obj[item]++;
+        return obj;
+      }, {});
+
+      console.log(reducedData);
+
+      //filterNames(inventors);
+      //filterDates(inventors);
+      //reduceYears(inventors);
     </script>
   </body>
 </html>
