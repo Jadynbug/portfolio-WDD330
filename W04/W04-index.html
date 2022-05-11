@@ -15,6 +15,43 @@
             <li><p>
                 The placeholder attribute lets you stick a defult text in an input.
             </p></li>
+            <li><P>
+                JS has classes that have constructors, private variables and functions, and getters
+                and setters.
+                <pre>
+                    class Turtle {
+                        constructor(name,color) {
+                            this.name = name;
+                            let _color = color;
+                            this.setColor = color => { return _color = color; }
+                            this.getColor = () => _color;
+                        }
+                    }
+                </pre>
+            </P></li>
+            <li><p>
+                You can use object.prototype to add to or change a class.
+            </p></li>
+            <li><p>
+                To use inheratence you use the keyword extendes
+                <pre>
+                    class NinjaTurtle extends Turtle {
+                        constructor(name) {
+                            super(name);
+                            this.weapon = 'hands';
+                        }
+                        attack() { return `Feel the power of my ${this.weapon}!` } 
+                    }
+                </pre>
+            </p></li>
+            <li><p>
+                Polymorphism is when multiple functions use the same function, but a few change it a litte.
+            </p></li>
+            <li><p>
+                Monkey patching is when you add prototype functions, etc, to a built in object/funciton like Array. 
+                Common consences is that you should avoid this.<br>Just make an inherited class that does the thing
+                you want to add.
+            </p></li>
 
             <li><a href="W04-quiz.html">quiz</a></li>
             
