@@ -52,6 +52,27 @@
                 Common consences is that you should avoid this.<br>Just make an inherited class that does the thing
                 you want to add.
             </p></li>
+            <li><p>
+                you can make object chains:
+                <pre>
+                    human: 
+                    superhuman:     Lois        Jimmy
+                    batman      superman         aquaman
+                </pre>
+                superman is superhuman and human but Lois is only human.
+            </p></li>
+            <li><p>
+                mixins are ment to help avoid shallow copies that change with each other.
+            </p></li>
+            <li><p>
+                This.name can refer to the window so if you want this.name == object name then you use:
+                 const that = this; that.name == object.name or .bind(this) which makes this local for a moment
+            </p></li>
+            <li><p>
+                If you want only one function from a class you can use:<br>
+                functionName = object.prototype.function;<br>
+                Or you could just make the function stand on its own and use it as a mixin for the class.
+            </p></li>
 
             <li><a href="W04-quiz.html">quiz</a></li>
             
