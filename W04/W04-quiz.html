@@ -61,7 +61,6 @@
                     this.render(this.score, game.score);
                     this.render(this.result, '');
                     this.render(this.info, '');
-                    this.resetForm();
                 },
 
                 resetForm () {
@@ -128,7 +127,6 @@
                     } else {
                         view.render(view.result, `Wrong! The correct answer is ${answer}`, {'class': 'wrong'});
                     }
-                    view.resetForm();
                     this.ask();
                 },
 
