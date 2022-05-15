@@ -1,0 +1,81 @@
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(3, 200px);
+    width: 620px;
+}
+.board {
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    font-size: 180px;
+}
+#a-1 {
+    grid-column: 1;
+    grid-row: 1;
+}
+#a-2 {
+    grid-column: 2;
+    grid-row: 1;
+    border-left: solid black;
+    border-right: solid black;
+}
+#a-3 {
+    grid-column: 3;
+    grid-row: 1;
+}
+#b-1 {
+    grid-column: 1;
+    grid-row: 2;
+    border-top: solid black;
+    border-bottom: solid black;
+}
+#b-2 {
+    grid-column: 2;
+    grid-row: 2;
+    border: solid black;
+}
+#b-3 {
+    grid-column: 3;
+    grid-row: 2;
+    border-top: solid black;
+    border-bottom: solid black;
+}
+#c-1 {
+    grid-column: 1;
+    grid-row: 3;
+}
+#c-2 {
+    grid-column: 2;
+    grid-row: 3;
+    border-left: solid black;
+    border-right: solid black;
+}
+#c-3 {
+    grid-column: 3;
+    grid-row: 3;
+}
+#players {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#player-1 {
+    background-color: cadetblue;
+    color: burlywood;
+}
+#player-2 {
+    background-color: burlywood;
+    color: cadetblue;
+}
+.switch {
+    height: 100px;
+    width: 200px;
+    text-align: center;
+    justify-self: center;
+}
+.turnYes {
+    border: solid chocolate 5px;
+}
+.turnNo {
+    border: none;
+}
