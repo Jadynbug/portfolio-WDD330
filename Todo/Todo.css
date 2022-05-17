@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+#todo-box {
+    display: flex;
+    flex-direction: column;
+    border: solid #666;
+    width: 400px;
+    min-height: 300px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lavenderblush;
+}
+#todo-box footer {
+    border: solid #666;
+    margin: 0 13px 30px 13px;
+    padding: 5px;
+}
+footer {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+.unclicked {
+    border: none;
+}
+.clicked {
+    border: solid #666 2px;
+}
+.check {
+    width: 25px;
+    margin: 5px;
+    justify-self: left;
+}
+ul {
+    display: flex;
+    flex-flow: column;
+    flex-grow: 2;
+    list-style: none;
+    padding:  10px;
+}
+li {
+    border: solid #666;
+    padding: 5px;
+    margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: 30px 1fr 30px;
+    background-color: white;
+    place-items: center;
+}
+li p {
+    margin: 2px;
+    grid-column: 2;
+    justify-self: left;
+}
+li button {
+    width: 25px;
+    height: 25px;
+    font-size: x-large;
+    text-align: center;
+    font-family: monospace;
+    padding: 0;
+    grid-column: 3;
+    justify-self: right;
+    border: solid #666 2px;
+    background-color: lavenderblush;
+}
+.task-bar {
+    background-color: lavenderblush;
+    height: 30px;
+}
+input {
+    width: 200px;
+    height: 35px;
+    border: solid #666;
+}
+form {
+    justify-self: flex-end;
+    margin-bottom: 5px;
+}
+form button {
+    background-color: lavenderblush;
+    height: 40px;
+    width: 40px;
+    border: solid #666;
+
+}
