@@ -16,6 +16,7 @@ body {
     border: solid #666;
     margin: 0 13px 30px 13px;
     padding: 5px;
+    background-color: white;
 }
 footer {
     display: flex;
