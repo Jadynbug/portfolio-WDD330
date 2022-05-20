@@ -78,7 +78,7 @@ li button {
 input {
     width: 200px;
     height: 35px;
-    border: solid #666;
+    border: solid #666 2px;
 }
 form {
     justify-self: flex-end;
@@ -88,6 +88,6 @@ form button {
     background-color: lavenderblush;
     height: 40px;
     width: 40px;
-    border: solid #666;
-
+    border: solid #666 2px;
+    font-size: large;
 }

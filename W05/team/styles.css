@@ -1,0 +1,13 @@
+h1 {
+    text-align: center;
+    background-color: lavenderblush;
+}
+li {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 70px 200px;
+    text-align: center;
+}
+li h2 {
+    grid-column: 1/3;
+}
