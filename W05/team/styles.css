@@ -2,6 +2,9 @@ h1 {
     text-align: center;
     background-color: lavenderblush;
 }
+main {
+    width: 100px;
+}
 li {
     display: grid;
     grid-template-columns: 1fr 1fr;
