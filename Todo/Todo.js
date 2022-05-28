@@ -35,9 +35,6 @@ export default class Todo {
     renderTodoList (list, element) {
         let eleList = "";
         for (i in list) {
-            if (toDoList == null) {
-                toDoList = [];
-            }
             eleList.pust(`<li class="task"><input type="checkbox" class="check"><p>${i.content}</p><button class="remove">X</button></li>`);     
         }
         console.log(eleList);
@@ -89,6 +86,9 @@ export default class Todo {
 function saveTodo (task=undefined, key) {
     if (task != undefined) {
         let todo = new Todo(task, key);
+        if (toDoList == null) {
+            toDoList = [];
+        }
         toDoList.push(todo);
         console.log('added to todo list');
     }
