@@ -110,11 +110,8 @@ function getTodo (key) {
 //set event listeners for the delete task buttons
 function setRemove () {
     let buttons = document.getElementsByClassName("remove");
-    buttons.forEach((b) => { addTouch(b)});
+    for (let b in buttons) {
+        b.addEventListener("click", Todo.removeTodo());
+        b.addEventListener("touch", Todo.removeTodo());
+    }
 }
-
-function addTouch (b) {
-    b.addEventListener("click", toDos.removeTodo());
-    b.addEventListener("touch", toDos.removeTodo());
-}
-
