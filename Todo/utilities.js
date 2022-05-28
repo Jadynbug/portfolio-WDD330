@@ -2,7 +2,7 @@
 passed to querySelector
 @return {element} The matching element or null if not found*/
 function qs(selector) {
-    let ele = document.querySelectorAll(selector);
+    let ele = document.getElementById(selector);
     if (ele != null) {
         console.log("got element");
         return ele;
@@ -17,8 +17,6 @@ element to attach the listener to
 export default function onTouch (elementSelector, callback) {
     let selector = qs(elementSelector);
     console.log(selector);
-    for (i in selector) {
-        selector.addEventListener("touchend", callback);
-        selector.addEventListener("click", callback);
-    }
+    selector.addEventListener("touchend", callback);
+    selector.addEventListener("click", callback);
 }
