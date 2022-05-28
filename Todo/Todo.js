@@ -87,7 +87,7 @@ export default class Todo {
         //var arr = [].slice.call(htmlCollection);
 
         console.log(typeof(buttons));
-        buttons.foreach((element) => {['touch', 'click'].forEach(e => element.addEventListener(e, this.removeTodo()))} );
+        r.foreach((element) => {['touch', 'click'].forEach(e => element.addEventListener(e, this.removeTodo()))} );
     }
         
 }
