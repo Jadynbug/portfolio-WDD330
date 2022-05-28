@@ -81,7 +81,7 @@ export default class Todo {
     }
 
     setRemove () {
-        let r = document.querySelectorAll(".remove");
+        let r = document.getElementsByClassName("remove");
         let buttons = [];
         for (let node in r) {
             buttons.push(node);
