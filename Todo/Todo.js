@@ -34,10 +34,12 @@ export default class Todo {
     element to insert our list elements into.*/
     renderTodoList (list, element) {
         let eleList = "";
-        if (list != []) {
+        if (list != [] || list != undefined) {
             for (let l in list) {
                 eleList +=`<li class="task"><input type="checkbox" class="check"><p>${l.content}</p><button class="remove">X</button></li>`;
             }
+        } else {
+            console.log("problem with rendering list");
         }
         console.log(eleList);
         if (eleList != null) { 
