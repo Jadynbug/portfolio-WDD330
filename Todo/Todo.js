@@ -108,6 +108,6 @@ function setRemove () {
 }
 
 
-onTouch("#all", toDos.filterList("all"));
-onTouch("active", toDos.filterList("active"));
-onTouch("completed", toDos.filterList("completed"));
+onTouch("#all", Todo.filterList("all"));
+onTouch("active", Todo.filterList("active"));
+onTouch("completed", Todo.filterList("completed"));
