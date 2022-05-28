@@ -39,7 +39,7 @@ export default class Todo {
         }
         console.log(eleList);
         if (eleList != null) { 
-            document.getElementById(this.element).innerHTML = eleList;
+            document.getElementById("task-list").innerHTML = eleList;
         } else {
             console.log("Where's my list?");
         }
