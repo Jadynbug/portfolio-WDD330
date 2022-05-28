@@ -59,7 +59,7 @@ export default class Todo {
         let comp = [];
         let uncomp = [];
         if (range != "all") {
-            for (i in toDoList) {
+            for (let i in toDoList) {
                 if (i.completed == false) {
                     uncomp.push(i);
                 } else if (i.completed == true) {
