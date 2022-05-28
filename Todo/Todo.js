@@ -111,7 +111,7 @@ function getTodo (key) {
 function setRemove () {
     let buttons = document.getElementsByClassName("remove");
     for (let b in buttons) {
-        b.addEventListener("click", Todo.removeTodo());
-        b.addEventListener("touch", Todo.removeTodo());
+        b.addEventListener("click", toDos.removeTodo());
+        b.addEventListener("touch", toDos.removeTodo());
     }
 }
