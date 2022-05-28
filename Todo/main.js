@@ -1,3 +1,6 @@
 import Todo from "./Todo.js";
 
-let toDoList = new Todo("task-list", "test-1");
+
+let toDos = new Todo("task-list", "test-1");
+
+document.getElementById("add-task").addEventListener("click", toDos.addToDo());
