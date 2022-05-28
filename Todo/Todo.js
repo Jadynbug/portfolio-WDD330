@@ -35,7 +35,7 @@ export default class Todo {
     renderTodoList (list, element) {
         let eleList = "";
         for (i in list) {
-            eleList.pust(`<li class="task"><input type="checkbox" class="check"><p>${i.content}</p><button class="remove">X</button></li>`);
+            eleList.pust(`<li class="task"><input type="checkbox" class="check"><p>${i.content}</p><button class="remove">X</button></li>`);     
         }
         console.log(eleList);
         if (eleList != null) { 
@@ -43,7 +43,9 @@ export default class Todo {
         } else {
             console.log("Where's my list?");
         }
-        setRemove();        
+        if (document.getElementById(this.element).innerHTML != "") {
+            setRemove();
+        }
     }
 
     listTodos () {
