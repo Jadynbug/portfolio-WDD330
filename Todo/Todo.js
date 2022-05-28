@@ -34,8 +34,8 @@ export default class Todo {
     element to insert our list elements into.*/
     renderTodoList (list, element) {
         let eleList = "";
-        for (i in list) {
-            eleList.pust(`<li class="task"><input type="checkbox" class="check"><p>${i.content}</p><button class="remove">X</button></li>`);     
+        for (l in list) {
+            eleList.pust(`<li class="task"><input type="checkbox" class="check"><p>${i.content}</p><button class="remove">X</button></li>`);
         }
         console.log(eleList);
         if (eleList != null) { 
