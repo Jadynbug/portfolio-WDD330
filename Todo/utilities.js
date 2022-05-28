@@ -17,6 +17,10 @@ element to attach the listener to
 export default function onTouch (elementSelector, callback) {
     let selector = qs(elementSelector);
     console.log(selector);
-    selector.addEventListener("touchend", callback);
-    selector.addEventListener("click", callback);
+    if (selector != null) {
+        selector.addEventListener("touchend", callback);
+        selector.addEventListener("click", callback);
+    } else {
+        console.log("failed to add event listeners");
+    }
 }
