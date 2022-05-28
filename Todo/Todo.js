@@ -39,7 +39,7 @@ export default class Todo {
         }
         console.log(eleList);
         if (eleList != null) { 
-            document.getElementById("task-list").innerHTML = eleList;
+            document.getElementById(this.element).innerHTML = eleList;
         } else {
             console.log("Where's my list?");
         }
@@ -106,9 +106,9 @@ function getTodo (key) {
 //set event listeners for the delete task buttons
 function setRemove () {
     let buttons = document.getElementsByClassName("remove");
-    for (i in buttons) {
-        i.addEventListener("touch", toDos.removeTodo());
-        i.addEventListener("click", toDos.removeTodo());
+    for (b in buttons) {
+        b.addEventListener("touch", toDos.removeTodo());
+        b.addEventListener("click", toDos.removeTodo());
     }
 }
 
