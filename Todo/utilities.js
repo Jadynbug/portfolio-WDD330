@@ -14,7 +14,7 @@ function qs(selector) {
 fallback for desktops @param {string} elementSelector The selector for the 
 element to attach the listener to
 * @param {function} callback The callback function to run*/
-function onTouch (elementSelector, callback) {
+export default function onTouch (elementSelector, callback) {
     let selector = qs(elementSelector);
     console.log(selector);
     for (i in selector) {
