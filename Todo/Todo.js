@@ -46,7 +46,7 @@ export default class Todo {
             console.log("Where's my list?");
         }
         if (document.getElementById(this.element).innerHTML != "") {
-            setRemove();
+            this.setRemove();
         }
     }
 
@@ -79,6 +79,14 @@ export default class Todo {
                 break;
         }
     }
+
+    setRemove () {
+        let buttons = document.getElementsByClassName("remove");
+        for (let b in buttons) {
+            b.addEventListener("click", this.removeTodo());
+            b.addEventListener("touch", this.removeTodo());
+        }
+    }
 }
 
 
@@ -106,12 +114,4 @@ function getTodo (key) {
         console.log("updated toDoList");
     }
     return toDoList;
-}
-//set event listeners for the delete task buttons
-function setRemove () {
-    let buttons = document.getElementsByClassName("remove");
-    for (let b in buttons) {
-        b.addEventListener("click", toDos.removeTodo());
-        b.addEventListener("touch", toDos.removeTodo());
-    }
 }
