@@ -83,7 +83,7 @@ export default class Todo {
     setRemove () {
         let r = document.getElementsByClassName("remove");
         console.log(r);
-        let buttons = [].slice.call(r);
+        let buttons = Array.from(r);
         //var arr = [].slice.call(htmlCollection);
 
         console.log(typeof(buttons));
