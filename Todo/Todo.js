@@ -5,12 +5,12 @@ import onTouch from "./utilities.js";
 const toDoList = null;
 
 export default class Todo {
-    constructor (task, key="one", ele="task-list") {
-        const element = ele;
-        const lsKey = key;
-        const timestamp = Date.now();
-        const content = task;
-        const completed = false;
+    constructor (task, key="one", element="task-list") {
+        this.element = element;
+        this.lsKey = key;
+        this.timestamp = Date.now();
+        this.content = task;
+        this.completed = false;
         this.listTodos();
     }
     addTodo () {
