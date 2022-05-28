@@ -34,10 +34,12 @@ export default class Todo {
     element to insert our list elements into.*/
     renderTodoList (list, element) {
         let eleList = "";
-        if (list != []) {
+        if (list != [] || list != undefined) {
             for (let l in list) {
                 eleList +=`<li class="task"><input type="checkbox" class="check"><p>${l.content}</p><button class="remove">X</button></li>`;
             }
+        } else {
+            console.log("problem with rendering list");
         }
         console.log(eleList);
         if (eleList != null) { 
@@ -46,13 +48,14 @@ export default class Todo {
             console.log("Where's my list?");
         }
         if (document.getElementById(this.element).innerHTML != "") {
-            setRemove();
+            this.setRemove();
         }
     }
 
     listTodos () {
         console.log(this.element);
         this.renderTodoList(toDoList, this.element);
+        console.log("listing todos");
     }
 
     filterList (range) {
@@ -77,6 +80,14 @@ export default class Todo {
             case "completed": 
                 this.renderTodoList(comp, this.element);
                 break;
+        }
+    }
+
+    setRemove () {
+        let buttons = document.getElementsByClassName("remove");
+        for (let b in buttons) {
+            b.addEventListener("click", this.removeTodo());
+            b.addEventListener("touch", this.removeTodo());
         }
     }
 }
@@ -107,11 +118,4 @@ function getTodo (key) {
     }
     return toDoList;
 }
-//set event listeners for the delete task buttons
-function setRemove () {
-    let buttons = document.getElementsByClassName("remove");
-    for (let b in buttons) {
-        b.addEventListener("click", toDos.removeTodo());
-        b.addEventListener("touch", toDos.removeTodo());
-    }
-}
+//help
