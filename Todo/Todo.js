@@ -110,7 +110,7 @@ function getTodo (key) {
 //set event listeners for the delete task buttons
 function setRemove () {
     let buttons = document.getElementsByClassName("remove");
-    buttons.array.forEach(b => { addTouch(b)});
+    buttons.forEach((b) => { addTouch(b)});
 }
 
 function addTouch (b) {
