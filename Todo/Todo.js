@@ -33,7 +33,7 @@ export default class Todo {
     @param {array} list The list of tasks to render to HTML @param {element} element The DOM
     element to insert our list elements into.*/
     renderTodoList (list, element) {
-        let eleList = ``;
+        let eleList = "";
         for (i in list) {
             eleList.pust(`<li class="task"><input type="checkbox" class="check"><p>${i.content}</p><button class="remove">X</button></li>`);
         }
