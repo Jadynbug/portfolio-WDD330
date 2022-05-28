@@ -2,7 +2,7 @@ import readFromLS from "./ls.js";
 import writeToLS from "./ls.js";
 import onTouch from "./utilities.js";
 
-const toDoList = null;
+const toDoList = [];
 
 export default class Todo {
     constructor (task, key="one", element="task-list") {
@@ -86,9 +86,6 @@ export default class Todo {
 function saveTodo (task=undefined, key) {
     if (task != undefined) {
         let todo = new Todo(task, key);
-        if (toDoList == null) {
-            toDoList = [];
-        }
         toDoList.push(todo);
         console.log('added to todo list');
     }
