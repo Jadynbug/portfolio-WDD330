@@ -36,7 +36,7 @@ export default class Todo {
         let eleList = "";
         if (list != []) {
             for (let l in list) {
-                eleList.pust(`<li class="task"><input type="checkbox" class="check"><p>${l.content}</p><button class="remove">X</button></li>`);
+                eleList +=`<li class="task"><input type="checkbox" class="check"><p>${l.content}</p><button class="remove">X</button></li>`;
             }
         }
         console.log(eleList);
