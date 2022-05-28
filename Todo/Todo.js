@@ -83,16 +83,13 @@ export default class Todo {
     setRemove () {
         let r = document.getElementsByClassName("remove");
         console.log(r);
-        let buttons = [];
-        if (r.length > 0) {
-            for (let node in r) {
-                buttons.push(node);
-            }
-            console.log(buttons);
-            for (let b in buttons) {
-                b.addEventListener("click", this.removeTodo());
-                b.addEventListener("touch", this.removeTodo());
-            }
+        let buttons = [].slice.call(r);
+        //var arr = [].slice.call(htmlCollection);
+
+        console.log(buttons);
+        for (let b in buttons) {
+            b.addEventListener("click", this.removeTodo());
+            b.addEventListener("touch", this.removeTodo());
         }
     }
         
