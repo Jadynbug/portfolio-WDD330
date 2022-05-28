@@ -47,6 +47,7 @@ export default class Todo {
     }
 
     listTodos () {
+        console.log(this.element);
         this.renderTodoList(toDoList, this.element);
     }
 
