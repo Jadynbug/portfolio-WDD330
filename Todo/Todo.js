@@ -107,7 +107,3 @@ function setRemove () {
     }
 }
 
-
-onTouch("#all", Todo.filterList("all"));
-onTouch("active", Todo.filterList("active"));
-onTouch("completed", Todo.filterList("completed"));
