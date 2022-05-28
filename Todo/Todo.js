@@ -55,6 +55,7 @@ export default class Todo {
     listTodos () {
         console.log(this.element);
         this.renderTodoList(toDoList, this.element);
+        console.log("listing todos");
     }
 
     filterList (range) {
