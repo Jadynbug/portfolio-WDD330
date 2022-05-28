@@ -39,8 +39,7 @@ export default class Todo {
         }
         console.log(eleList);
         document.getElementById(this.element).innerHTML = eleList;
-        onTouch(".remove", this.removeTodo());
-        
+        setRemove();        
     }
 
     listTodos () {
@@ -99,4 +98,16 @@ function getTodo (key) {
     }
     return toDoList;
 }
+//set event listeners for the delete task buttons
+function setRemove () {
+    let buttons = document.getElementsByClassName("remove");
+    for (i in buttons) {
+        i.addEventListener("touch", toDos.removeTodo());
+        i.addEventListener("click", toDos.removeTodo());
+    }
+}
 
+
+onTouch("#all", toDos.filterList("all"));
+onTouch("active", toDos.filterList("active"));
+onTouch("completed", toDos.filterList("completed"));
