@@ -51,7 +51,7 @@ export default class Todos {
         let eleList = "";
         if (list != []) {
             for (let l in list) {
-                eleList +=`<li class="task"><input type="checkbox" id="chk_${l.id}" class="check"><p>${l.content}</p><button id="rem_${l.id}" class="remove">X</button></li>`;
+                eleList +=`<li class="task"><input type="checkbox" id="chk_${list[l].id}" class="check"><p>${list[l].content}</p><button id="rem_${list[l].id}" class="remove">X</button></li>`;
             }
         }
         console.log(eleList);
