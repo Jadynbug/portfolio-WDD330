@@ -87,7 +87,7 @@ export default class Todos {
                 break;
             case "active":
                 this.renderTodoList(uncomp, this.element);
-                b2=classList.add("clicked");
+                b2.classList.add("clicked");
                 break;
             case "completed": 
                 this.renderTodoList(comp, this.element);
