@@ -64,7 +64,7 @@ export default class Todos {
     }
 
     doTouch (ev) {
-        filterList(ev.target.id);
+        this.filterList(ev.target.id);
     }
 
     filterList (range) {
