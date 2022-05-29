@@ -3,8 +3,6 @@ import onTouch from "./utilities.js";
 
 
 window.toDos = new Todo("Task 1", "test-1", "task-list");
-//setTimeout(toDos.setup, 1000);
-
 
 
 function listen () {
@@ -14,3 +12,4 @@ function listen () {
     onTouch("completed", window.toDos.filterList("completed"));
 }
 
+listen();
