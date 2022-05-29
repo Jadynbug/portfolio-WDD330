@@ -3,7 +3,7 @@ import onTouch from "./utilities.js";
 
 
 let toDos = new Todo("Task 1", "test-1", "task-list");
-setTimeout(toDos.setup, 1000);
+//setTimeout(toDos.setup, 1000);
 
 function clicker (range) {
     toDos.filterList(range);
