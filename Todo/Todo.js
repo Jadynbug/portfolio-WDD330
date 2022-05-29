@@ -59,9 +59,9 @@ export default class Todos {
     }
 
     listTodos () {
-        console.log(window.toDos.element);
-        toDoList = getTodo(window.toDos.lsKey);
-        this.renderTodoList(toDoList, window.toDos.element);
+        console.log(this.element);
+        toDoList = getTodo(this.lsKey);
+        this.renderTodoList(toDoList, this.element);
     }
 
     filterList (range) {
