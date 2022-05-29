@@ -23,17 +23,20 @@ export default class Todos {
         this.listTodos();
     }
 
+    // Callback
     addTodo () {
         let name = document.getElementById("input").value;
         let todo = new Todo(name, false);
-        saveTodo(todo, this.lsKey);
-        this.listTodos();
+        saveTodo(todo, window.toDos.lsKey);
+        window.toDos.listTodos();
     }  
 
+    // Callback
     completeTodo () {
         console.log("completeTodo() called");
     }
 
+    // Callback
     removeTodo() {
         let id = substr(this.id, 4);
         console.log("removeTodo() called " + id);
