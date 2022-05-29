@@ -19,7 +19,7 @@ export default function onTouch (elementSelector, callback) {
     console.log(selector);
     if (selector != null) {
         selector.addEventListener("touchend", callback);
-        selector.addEventListener("onClick", callback);
+        selector.addEventListener("click", callback);
     } else {
         console.log("failed to add event listeners");
     }
