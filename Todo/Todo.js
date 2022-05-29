@@ -37,7 +37,7 @@ export default class Todos {
     removeTodo() {
         console.log("removeTodo() called");
         
-        this.renderTodoList();
+        this.listTodos();
     }
     
     /* foreach todo in list, build a li element for the todo, and append it to element
@@ -108,7 +108,7 @@ export default class Todos {
         console.log(typeof(buttons));
         //r.foreach((element) => {} );
         for (let i of r) {
-            ['touch', 'click'].forEach(e => i.addEventListener(e, this.removeTodo()));
+            ['touch', 'click'].forEach(e => i.addEventListener(e, this.removeTodo));
         }
     }
 
