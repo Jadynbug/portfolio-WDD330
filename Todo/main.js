@@ -15,4 +15,3 @@ function listen () {
     onTouch("completed", toDos.filterList("completed"));
 }
 
-window.onload(listen());
