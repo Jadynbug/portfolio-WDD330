@@ -91,7 +91,7 @@ export default class Todos {
                 break;
             case "completed": 
                 this.renderTodoList(comp, this.element);
-                b2.classList.add("clicked");
+                b3.classList.add("clicked");
                 break;
         }
     }
