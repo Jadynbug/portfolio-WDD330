@@ -14,12 +14,6 @@ export default class Todo {
         this.listTodos();
     }
 
-    setup () {
-        document.getElementById("addTask").addEventListener("click", this.addTodo());
-        onTouch("all", this.filterList("all"));
-        onTouch("active", this.filterList("active"));
-        onTouch("completed", this.filterList("completed"));
-    }
     addTodo () {
         let ele = document.getElementById("input").value;
         saveTodo(ele, this.lsKey);
@@ -99,6 +93,13 @@ export default class Todo {
         for (let i of r) {
             ['touch', 'click'].forEach(e => i.addEventListener(e, this.removeTodo()));
         }
+    }
+
+    setup () {
+        document.getElementById("addTask").addEventListener("click", this.addTodo());
+        onTouch("all", this.filterList("all"));
+        onTouch("active", this.filterList("active"));
+        onTouch("completed", this.filterList("completed"));
     }
         
 }
