@@ -13,6 +13,13 @@ export default class Todo {
         this.completed = false;
         this.listTodos();
     }
+
+    setup () {
+        document.getElementById("addTask").addEventListener("click", this.addTodo());
+        onTouch("all", this.filterList("all"));
+        onTouch("active", this.filterList("active"));
+        onTouch("completed", this.filterList("completed"));
+    }
     addTodo () {
         let ele = document.getElementById("input").value;
         saveTodo(ele, this.lsKey);
