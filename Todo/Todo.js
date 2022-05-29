@@ -56,6 +56,7 @@ export default class Todo {
     }
 
     filterList (range) {
+        console.log("FilterList(" + range + ")");
         let comp = [];
         let uncomp = [];
         if (range != "all") {
