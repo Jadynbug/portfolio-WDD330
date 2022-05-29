@@ -2,7 +2,7 @@ import Todo from "./Todo.js";
 import onTouch from "./utilities.js";
 
 
-window.toDos = new Todo("Task 1", "test-1", "task-list");
+window.toDos = new Todo("test-1", "task-list");
 
 
 function listen () {

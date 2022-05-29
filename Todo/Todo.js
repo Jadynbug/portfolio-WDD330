@@ -2,31 +2,37 @@ import readFromLS from "./ls.js";
 import writeToLS from "./ls.js";
 import onTouch from "./utilities.js";
 
-const toDoList = [];
+class Todo { 
+    constructor (name, completed) {
+        this.id = Date.now();
+        this.content = name;
+        this.completed = completed;
+    }
+ }
 
-export default class Todo {
-    constructor (task, key="one", element="task-list") {
+let toDoList = null;
+
+export default class Todos {
+    constructor (key="one", element="task-list") {
         this.element = element;
         this.lsKey = key;
-        this.timestamp = Date.now();
-        this.content = task;
-        this.completed = false;
         this.listTodos();
     }
 
     addTodo () {
-        let ele = document.getElementById("input").value;
-        saveTodo(ele, this.lsKey);
+        let name = document.getElementById("input").value;
+        let todo = new Todo(name, false);
+        saveTodo(todo, this.lsKey);
         this.listTodos();
     }  
 
     completeTodo () {
-
+        console.log("completeTodo() called");
     }
 
     removeTodo() {
+        console.log("removeTodo() called");
         
-        console.log("removing");
         this.renderTodoList();
     }
     
@@ -108,13 +114,10 @@ export default class Todo {
 /* build a todo object, add it to the todoList, and save the new list to local storage.
 @param {string} key The key under which the value is stored under in LS @param {string}
  task The text of the task to be saved.*/
-function saveTodo (task=undefined, key) {
-    if (task != undefined) {
-        let todo = new Todo(task, key);
-        toDoList.push(todo);
-        console.log('added to todo list');
-    }
-    console.log(toDoList);
+function saveTodo (task, key) {
+    toDoList = getTodo(key);
+    toDoList.push(task);
+    console.log('added ' + task.content + ' to todo list ' + toDoList);
     writeToLS(key, toDoList);
 }
 
@@ -129,4 +132,27 @@ function getTodo (key) {
         console.log("updated toDoList");
     }
     return toDoList;
+}
+
+function removeTodo (id, key) {
+    toDoList = getTodo(key);
+    index = toDoList.findIndex(x => {x.id == id});
+    toDoList.splice(index, 1);
+        
+    console.log('removed ' + id + ' from todo list');
+    console.log(toDoList);
+    writeToLS(key, toDoList);
+}
+
+function completeTodo (id, completed, key) {
+    toDoList = getTodo(key);
+    index = toDoList.findIndex(x => {x.id == id});
+    if (index >= 0) {
+        toDoList[index].completed = completed;
+        console.log('changed ' + id + ' in todo list');
+    } else {
+        console.log('Could not find ' + id + ' in todo list');
+    }
+    console.log(toDoList);
+    writeToLS(key, toDoList);
 }
