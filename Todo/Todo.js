@@ -2,6 +2,10 @@ import readFromLS from "./ls.js";
 import writeToLS from "./ls.js";
 import onTouch from "./utilities.js";
 
+const b1 = document.getElementById("all");
+const b2 = document.getElementById("active");
+const b3 = document.getElementById("completed");
+
 class Todo { 
     constructor (name, completed) {
         this.id = Date.now();
@@ -47,19 +51,20 @@ export default class Todos {
             }
         }
         console.log(eleList);
-        if (eleList != null) { 
-            document.getElementById(this.element).innerHTML = eleList;
-        } else {
-            console.log("Where's my list?");
-        }
-        if (document.getElementById(this.element).innerHTML != "") {
+        document.getElementById(element).innerHTML = eleList;
+        if (document.getElementById(element).innerHTML != "") {
             this.setRemove();
         }
     }
 
     listTodos () {
         console.log(this.element);
+        toDoList = getTodo(this.lsKey);
         this.renderTodoList(toDoList, this.element);
+    }
+
+    doTouch (ev) {
+        filterList(ev.target.id);
     }
 
     filterList (range) {
@@ -75,15 +80,21 @@ export default class Todos {
                 }
             }
         }
+        b1.classList.remove("clicked");
+        b2.classList.remove("clicked");
+        b3.classList.remove("clicked");
         switch (range) {
             case "all": 
                 this.renderTodoList(toDoList, this.element);
+                b1.classList.add("clicked");
                 break;
             case "active":
                 this.renderTodoList(uncomp, this.element);
+                b2=classList.add("clicked");
                 break;
             case "completed": 
                 this.renderTodoList(comp, this.element);
+                b2.classList.add("clicked");
                 break;
         }
     }
