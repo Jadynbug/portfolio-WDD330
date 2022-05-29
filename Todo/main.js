@@ -8,7 +8,7 @@ function clicker (range) {
     toDos.filterList(range);
 }
 
-document.getElementById("addTask").addEventListener("click", toDos.addTodo());
+document.getElementById("addTask").addEventListener("onClick", toDos.addTodo());
 onTouch("all", toDos.filterList("all"));
 onTouch("active", toDos.filterList("active"));
 onTouch("completed", toDos.filterList("completed"));
