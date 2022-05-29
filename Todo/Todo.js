@@ -35,9 +35,10 @@ export default class Todos {
     }
 
     removeTodo() {
-        console.log("removeTodo() called");
-        
-        this.listTodos();
+        let id = substr(this.id, 4);
+        console.log("removeTodo() called " + id);
+        removeTodo(id, window.toDos.lsKey);
+        window.toDos.listTodos();
     }
     
     /* foreach todo in list, build a li element for the todo, and append it to element
@@ -47,7 +48,7 @@ export default class Todos {
         let eleList = "";
         if (list != []) {
             for (let l in list) {
-                eleList +=`<li class="task"><input type="checkbox" class="check"><p>${l.content}</p><button class="remove">X</button></li>`;
+                eleList +=`<li class="task"><input type="checkbox" id="chk_${l.id}" class="check"><p>${l.content}</p><button id="rem_${l.id}" class="remove">X</button></li>`;
             }
         }
         console.log(eleList);
@@ -61,10 +62,6 @@ export default class Todos {
         console.log(this.element);
         toDoList = getTodo(this.lsKey);
         this.renderTodoList(toDoList, this.element);
-    }
-
-    doTouch (ev) {
-        this.filterList(ev.target.id);
     }
 
     filterList (range) {
@@ -111,14 +108,6 @@ export default class Todos {
             ['touch', 'click'].forEach(e => i.addEventListener(e, this.removeTodo));
         }
     }
-
-    setup () {
-        document.getElementById("addTask").addEventListener("click", this.addTodo());
-        onTouch("all", this.filterList("all"));
-        onTouch("active", this.filterList("active"));
-        onTouch("completed", this.filterList("completed"));
-    }
-        
 }
 
 
