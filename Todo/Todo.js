@@ -17,8 +17,8 @@ class Todo {
 let toDoList = null;
 
 export default class Todos {
-    constructor (key="one", element="task-list") {
-        this.element = element;
+    constructor (key="one", name="task-list") {
+        this.element = name;
         this.lsKey = key;
         this.listTodos();
     }
