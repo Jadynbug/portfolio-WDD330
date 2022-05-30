@@ -6,8 +6,10 @@ export default function readFromLS(key) {
     let seri = localStorage.getItem(key);
     console.log("read from ls");
     if (seri != null) {
+        alert(seri + " not null");
         return JSON.parse(seri);
     }
+    alert(seri + " null");
     return [];
 }
 
@@ -17,6 +19,7 @@ export default function readFromLS(key) {
 * @param {array} data The information to be stored as an array of objects. Must be serialized.*/
 export function writeToLS(key, data) {
     let seri = JSON.stringify(data);
+    alert(seri + " writing to ls");
     localStorage.setItem(key, seri);
     console.log("write to ls");
 }
