@@ -2,7 +2,7 @@
  JSON @param {string} key The key under which the 
  value is stored under in LS
 @return {array} The value as an array of objects*/
-export default function readFromLS(key) {
+export function readFromLS(key) {
     let seri = localStorage.getItem(key);
     console.log("read from ls");
     if (seri != null) {
@@ -19,7 +19,7 @@ export default function readFromLS(key) {
 * @param {array} data The information to be stored as an array of objects. Must be serialized.*/
 export function writeToLS(key, data) {
     let seri = JSON.stringify(data);
-    alert(seri + " writing to ls");
+    alert(seri + " writing to ls " + key);
     localStorage.setItem(key, seri);
-    console.log("write to ls");
+    console.log("write to ls " + key);
 }
