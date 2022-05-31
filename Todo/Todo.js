@@ -55,9 +55,14 @@ export default class Todos {
     renderTodoList (list, element) {
         let filter = document.querySelector('.clicked').id;
         let eleList = "";
+        let numTasks = 0;
         if (list != []) {
             for (let l in list) {
-                let checked = list[l].completed ? 'checked' : '';
+                let checked = '';
+                if (list[l].completed) {
+                    checked = 'checked';
+                    numTasks++;
+                }
                 if (filter == 'all' || (filter == 'active' && list[l].completed == false) || (filter == 'completed' && list[l].completed == true)) {
                     eleList +=`<li class="task"><input type="checkbox" id="chk_${list[l].id}" class="check" ${checked}><p>${list[l].content}</p><button id="rem_${list[l].id}" class="remove">X</button></li>`;
                 }
@@ -69,6 +74,7 @@ export default class Todos {
             this.setCallbackForClassName("remove", this.removeTodo);
             this.setCallbackForClassName("check", this.completeTodo);
         }
+        document.getElementById('tasksLeft').innerText = numTasks;
     }
 
     listTodos () {
