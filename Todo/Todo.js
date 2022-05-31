@@ -7,7 +7,7 @@ const b3 = document.getElementById("completed");
 
 class Todo { 
     constructor (name, completed) {
-        this.id = Date.now();
+        this.id = Date.now() + '';
         this.content = name;
         this.completed = completed;
     }
@@ -37,7 +37,8 @@ export default class Todos {
 
     // Callback
     removeTodo() {
-        let id = substr(this.id, 4);
+        let idStr = String(this.id);
+        let id = idStr.substring(this.id, 4);
         console.log("removeTodo() called " + id);
         removeTodo(id, window.toDos.lsKey);
         window.toDos.listTodos();
