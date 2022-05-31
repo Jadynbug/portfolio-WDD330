@@ -1,5 +1,4 @@
-import readFromLS from "./ls.js";
-import writeToLS from "./ls.js";
+import {readFromLS, writeToLS} from "./ls.js";
 import onTouch from "./utilities.js";
 
 const b1 = document.getElementById("all");
