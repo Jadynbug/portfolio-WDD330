@@ -141,7 +141,7 @@ function getTodo (key) {
 
 function removeTodo (id, key) {
     toDoList = getTodo(key);
-    let index = toDoList.findIndex(x => {x.id === id});
+    let index = toDoList.findIndex((x) => x.id === id);
     toDoList.splice(index, 1);
         
     console.log('removed ' + id + ' from todo list');
@@ -151,7 +151,7 @@ function removeTodo (id, key) {
 
 function completeTodo (id, completed, key) {
     toDoList = getTodo(key);
-    let index = toDoList.findIndex(x => {x.id === id});
+    let index = toDoList.findIndex((x) => x.id === id);
     if (index >= 0) {
         toDoList[index].completed = completed;
         console.log('changed ' + id + ' in todo list');
