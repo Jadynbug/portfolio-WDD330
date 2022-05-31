@@ -2,7 +2,7 @@
  JSON @param {string} key The key under which the 
  value is stored under in LS
 @return {array} The value as an array of objects*/
-export default function readFromLS(key) {
+export function readFromLS(key) {
     let seri = localStorage.getItem(key);
     console.log("read from ls");
     if (seri != null) {
