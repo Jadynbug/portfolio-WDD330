@@ -53,11 +53,14 @@ export default class Todos {
     @param {array} list The list of tasks to render to HTML @param {element} element The DOM
     element to insert our list elements into.*/
     renderTodoList (list, element) {
+        let filter = document.querySelector('.clicked').id;
         let eleList = "";
         if (list != []) {
             for (let l in list) {
                 let checked = list[l].completed ? 'checked' : '';
-                eleList +=`<li class="task"><input type="checkbox" id="chk_${list[l].id}" class="check" ${checked}><p>${list[l].content}</p><button id="rem_${list[l].id}" class="remove">X</button></li>`;
+                if (filter == 'all' || (filter == 'active' && list[l].completed == false) || (filter == 'completed' && list[l].completed == true)) {
+                    eleList +=`<li class="task"><input type="checkbox" id="chk_${list[l].id}" class="check" ${checked}><p>${list[l].content}</p><button id="rem_${list[l].id}" class="remove">X</button></li>`;
+                }
             }
         }
         console.log(eleList);
@@ -76,34 +79,21 @@ export default class Todos {
 
     filterList (range) {
         console.log("FilterList(" + range + ")");
-        let comp = [];
-        let uncomp = [];
-        if (range != "all") {
-            for (let i in toDoList) {
-                if (i.completed == false) {
-                    uncomp.push(i);
-                } else if (i.completed == true) {
-                    comp.push(i);
-                }
-            }
-        }
         b1.classList.remove("clicked");
         b2.classList.remove("clicked");
         b3.classList.remove("clicked");
         switch (range) {
             case "all": 
-                this.renderTodoList(toDoList, this.element);
                 b1.classList.add("clicked");
                 break;
             case "active":
-                this.renderTodoList(uncomp, this.element);
                 b2.classList.add("clicked");
                 break;
             case "completed": 
-                this.renderTodoList(comp, this.element);
                 b3.classList.add("clicked");
                 break;
         }
+        this.renderTodoList(toDoList, this.element);
     }
 
     setCallbackForClassName (name, callback) {
