@@ -63,7 +63,8 @@ export default class Todos {
         console.log(eleList);
         document.getElementById(element).innerHTML = eleList;
         if (document.getElementById(element).innerHTML != "") {
-            this.setRemove();
+            this.setCallbackForClassName("remove", this.removeTodo);
+            this.setCallbackForClassName("check", this.completeTodo);
         }
     }
 
@@ -105,16 +106,11 @@ export default class Todos {
         }
     }
 
-    setRemove () {
-        let r = document.getElementsByClassName("remove");
+    setCallbackForClassName (name, callback) {
+        let r = document.getElementsByClassName(name);
         console.log(r);
-        let buttons = Array.from(r);
-        //var arr = [].slice.call(htmlCollection);
-
-        console.log(typeof(buttons));
-        //r.foreach((element) => {} );
         for (let i of r) {
-            ['touch', 'click'].forEach(e => i.addEventListener(e, this.removeTodo));
+            ['touch', 'click'].forEach(e => i.addEventListener(e, callback));
         }
     }
 }
