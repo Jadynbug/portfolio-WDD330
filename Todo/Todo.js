@@ -33,7 +33,7 @@ export default class Todos {
     // Callback
     completeTodo () {
         let idStr = String(this.id);
-        let id = idStr.substring(this.id, 4);
+        let id = idStr.substring(4);
         console.log("completeTodo() called " + id);
         completeTodo(id, this.checked, window.toDos.lsKey);
         window.toDos.listTodos();
@@ -43,7 +43,7 @@ export default class Todos {
     // Callback
     removeTodo() {
         let idStr = String(this.id);
-        let id = idStr.substring(this.id, 4);
+        let id = idStr.substring(4);
         console.log("removeTodo() called " + id);
         removeTodo(id, window.toDos.lsKey);
         window.toDos.listTodos();
