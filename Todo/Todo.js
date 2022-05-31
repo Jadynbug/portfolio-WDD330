@@ -32,6 +32,11 @@ export default class Todos {
 
     // Callback
     completeTodo () {
+        let idStr = String(this.id);
+        let id = idStr.substring(this.id, 4);
+        console.log("completeTodo() called " + id);
+        completeTodo(id, this.checked, window.toDos.lsKey);
+        window.toDos.listTodos();
         console.log("completeTodo() called");
     }
 
@@ -51,7 +56,8 @@ export default class Todos {
         let eleList = "";
         if (list != []) {
             for (let l in list) {
-                eleList +=`<li class="task"><input type="checkbox" id="chk_${list[l].id}" class="check"><p>${list[l].content}</p><button id="rem_${list[l].id}" class="remove">X</button></li>`;
+                let checked = list[l].completed ? 'checked' : '';
+                eleList +=`<li class="task"><input type="checkbox" id="chk_${list[l].id}" class="check" ${checked}><p>${list[l].content}</p><button id="rem_${list[l].id}" class="remove">X</button></li>`;
             }
         }
         console.log(eleList);
