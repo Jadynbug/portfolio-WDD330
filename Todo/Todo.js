@@ -61,6 +61,7 @@ export default class Todos {
                 let checked = '';
                 if (list[l].completed) {
                     checked = 'checked';
+                } else {
                     numTasks++;
                 }
                 if (filter == 'all' || (filter == 'active' && list[l].completed == false) || (filter == 'completed' && list[l].completed == true)) {
