@@ -63,7 +63,122 @@
             <li><p>
                 If a function returns a function it can't be used (completely) unless assigned to a variable and called with ().
             </p></li>
+            <li><p>
+                A closer lets you define a function that returns an anomous function to be assigned to a variable and used by calling the
+                variable with ().
+                <pre>
+                    function closure() {
+                        const a = 1.8;
+                        const b = 32;
+                        return c => c * a + b;
+                    }
+
+                    const toFahrenheit = closure();
+
+                    toFahrenheit(30);
+                        -- 86
+                </pre>
+                Another example as a closure can access and change variables:
+                <pre>
+                    function counter(start){
+                        let i = start;
+                        return function() {
+                            return i++;
+                        }
+                    }
+
+                    const count = counter(1);
+                </pre>
+            </p></li>
+            <li><p>
+                You can make a generator with: function* functionName() <br>
+                I don't think I understand this one. I think I'll need more info on it.
+            </p></li>
+            <li><p>
+                A generator used yeild instead of return. It seems to be able to do recursive calling, calling itself, but also able to pause?
+            </p></li>
+            <li><p>
+                A pure function is one that only uses a perameter, variables defined in local scope, and returns something. It does not change
+                any part of the program.
+            </p></li>
+            <li><p>
+                A higher-order function is one that either takes a function as a perameter or returns a function.<br>
+                they can be used to build up other functions. I don't really understand yet.
+            </p></li>
+            <li><p>
+                Currying is when a function is set up to return a different function if it doesn't get all of the perameters it wants.
+                <pre>
+                    function multiplier(x,y) {
+                        if (y === undefined) {
+                            return function(z) {
+                            return x * z;
+                            }
+                        } else {
+                            return x * y;
+                        }
+                    }
+                    
+                    calcTax = multiplier(0.22);
+                        -- function (z){ return x * z; }
+
+                    calcTax(400);
+                        -- 88
+                </pre>
+                Or rather:
+                <pre>
+                    function curry(func,...oldArgs) {
+                        return function(...newArgs) {
+                            const allArgs = [...oldArgs,...newArgs];
+                            return func(...allArgs);
+                        }
+                    }
+                </pre>
+            </p></li>
+            <li><p>
+                Ajax is used to request, retrive, and transfer data across the internet. <br>
+                Example:
+                <pre>
+                    const request = new Request('https://example.com/data', {
+                        method: 'GET',
+                        mode: 'cors',
+                        redirect: 'follow',
+                        cache: 'no-cache'
+                    });
+                </pre>
+                Once the request is set to a variable you can use a fetch request.
+                <pre>
+                    fetch(request).then( // do something with the response ).catch( // handle any errors)
+                </pre>
+                Or you can combine the actions
+                <pre>
+                    fetch('https://example.com/data', {
+                        method: 'GET',
+                        mode: 'cors',
+                        redirect: 'follow',
+                        cache: 'no-cache'
+                    }).then( // do something with the response ).catch( // handle any errors)
+                </pre>
+            </p></li>
+            <li><p>
+                You can also do stuff with headers. I don't really get why you would do anything with them, but heres an example:
+                <pre>
+                    const url = 'https:example.com/data';
+                    const headers = new Headers({ 'Content-Type': 'text/plain', 'Accept-Charset' : 'utf-8', 'Accept-Encoding':'gzip,deflate' })
+
+                    const request = (url,{
+                        headers: headers
+                    })
+
+                    fetch(request).then( function(response) {
+                                            if(response.ok) {
+                                                return response;
+                                            }
+                                            throw Error(response.statusText);
+                                        }).then( response => // do something with response ).catch( error => console.log('There was an error!') )
+                </pre>
+            </p></li>
             
+            <li><a href="../W05/W05-quiz.html">quiz</a></li>
         </ol>
 
         <footer><a href="../index.html">Home</a></footer>
