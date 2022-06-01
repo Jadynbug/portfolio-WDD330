@@ -12,7 +12,57 @@
         
 
         <ol>
-
+            <li><p>
+                Local storage is finiky
+            </p></li>
+            <li><p>
+                A function can use a this:<br>
+                function.call(this);
+            </p></li>
+            <li><p>
+                A function can hold a cache: <br>
+                function.cache = ------;
+            </p></li>
+            <li><p>
+                IIFEs seem to be similar to arrow functions exept they are called as soon as they are writen.
+            </p></li>
+            <li><p>
+                An IIFE could be used inside a funciton to have it do one thing until it reaches a point and then do another 
+                as it got redefined.
+            </p></li>
+            <li><p>
+                A function loses it's properties when it gets redefined.
+            </p></li>
+            <li><p>
+                A function can use IIFEs to redine based on an if check. This optimized the function and improves run time.
+            </p></li>
+            <li><p>
+                A promise is a specific kind of funciton built to test and return either a resolve/sucsess or a regect/failure/error. 
+                <br>Then you define:<br>
+                promise.then(result => {}).catch(result => {});<br>
+                So that you can catch and respond correctly to both success and failure.
+            </p></li>
+            <li><p>
+                Promises can be chained to avoid callback hell.<br>
+                login(userName).then(user => getPlayerInfo(user.id)).then(info => loadGame(info)).catch( throw error);
+            </p></li>
+            <li><p>
+                Using:<br>
+                <pre>
+                    async function {
+                        try {
+                            let variable = await function(perameter);
+                        }
+                        catch (error) {
+                            throw(error);
+                        }
+                    }
+                </pre>
+                means that the code is set to run asyncronously and won't be run until the promise in the keyword "await" is met and resoloved.
+            </p></li>
+            <li><p>
+                If a function returns a function it can't be used (completely) unless assigned to a variable and called with ().
+            </p></li>
             
         </ol>
 
