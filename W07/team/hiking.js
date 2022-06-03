@@ -58,7 +58,7 @@ const hikeList = [
     }
 
     getAllComments() {
-
+      this.listComments();
     }
 
     renderCommentList(list, element) {
@@ -236,13 +236,14 @@ const hikeList = [
           <div>
             <form>
               <input placeholder="Enter Name of Hike" id="hikeNameInput"/>
-              <input placeholder="Enter Comment" id="hikeCommentInput"/>
+              <input placeholder="Enter Comment" id="hikeCommentInput"/><button id="addComment">Add Comment</button>
               <input placeholder="Enter Type of Comment" id="hikeTypeInput"/>
             </form>
             <ul id="${hike.name}-list"></ul>
           </div>
       
       `;
+      document.getElementById("addComment").addEventListener("click", this.comment.addComment);
     return item;
   }
 
