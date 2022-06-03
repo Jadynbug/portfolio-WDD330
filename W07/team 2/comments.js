@@ -97,6 +97,7 @@ class Comments {
         comments = [];
       }
       renderCommentList(parent.lastChild, comments);
+      console.log(comments);
     } catch (error) {
       console.log(error);
     }
