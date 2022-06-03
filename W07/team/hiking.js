@@ -52,7 +52,7 @@ const hikeList = [
 
   class commentManager {
     constructor (key, element) {
-      this.key = key;
+      this.key = document.getElementById(key);
       this.comments = getComments(this.key);
       this.element = element;
     }
