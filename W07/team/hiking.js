@@ -110,8 +110,8 @@ const hikeList = [
     addCommentListener() {
       document.getElementById("addNewComment").addEventListener("click", this.comment.addComment);
     }
-    saveComments(comment) {
-      commentList = getComments(this.key);
+    saveComments(comment, key) {
+      commentList = getComments(key);
       commentList.push(comment);
       console.log('added ' + comment.content + ' to todo list ' + commentList);
       writeToLS(key, commentList);
