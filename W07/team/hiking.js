@@ -159,6 +159,7 @@ const hikeList = [
         const hike = this.getHikeByName(hikeName);
         this.parentElement.innerHTML = '';
         this.parentElement.appendChild(renderOneHikeFull(hike));
+        this.comment.listComments();
         // show the back button
         this.backButton.classList.remove('hidden');
     }
