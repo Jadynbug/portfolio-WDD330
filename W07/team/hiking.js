@@ -96,7 +96,7 @@ const hikeList = [
       let type = document.getElementById("hikeTypeInput").value;
       let content = document.getElementById("hikeContentInput").value;
       let comment = new newComment(name, content, type);
-      saveTodo(comment, this.key);
+      this.saveComments(comment, this.key);
       this.listComments();
     }
     removeComment() {
@@ -162,11 +162,11 @@ const hikeList = [
       // We need to loop through the children of our list and attach a listener to each, remember though that children is a nodeList...not an array. So in order to use something like a forEach we need to convert it to an array.
         const childrenArray = Array.from(this.parentElement.children);
         childrenArray.forEach(child => {
-        child.addEventListener('click', e => {
-        // why currentTarget instead of target?
-        this.showOneHike(e.currentTarget.dataset.name);
-      });
-    });
+            child.addEventListener('click', e => {
+              // why currentTarget instead of target?
+              this.showOneHike(e.currentTarget.dataset.name);
+            });
+        });
     }
 
     buildBackButton() {
@@ -263,19 +263,19 @@ function writeToLS(key, data) {
 }
 
 function getComments (key) {
-  if (toDoList == null) {
-      toDoList = readFromLS(key);
-      console.log("updated toDoList");
+  if (commentList == null) {
+      commentList = readFromLS(key);
+      console.log("updated commentList");
   }
-  return toDoList;
+  return commentList;
 }
 
 function removeComments (id, key) {
-  toDoList = getComments(key);
-  let index = toDoList.findIndex((x) => x.id === id);
-  toDoList.splice(index, 1);
+  commentList = getComments(key);
+  let index = commentList.findIndex((x) => x.id === id);
+  commentList.splice(index, 1);
       
-  console.log('removed ' + id + ' from todo list');
-  console.log(toDoList);
-  writeToLS(key, toDoList);
+  console.log('removed ' + id + ' from comment list');
+  console.log(commentList);
+  writeToLS(key, commentList);
 }
