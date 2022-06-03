@@ -48,7 +48,7 @@ const hikeList = [
       this.type = type;
     }
   }
-  const commentList = [];
+  let commentList = null;
 
   class commentManager {
     constructor (key, element) {
