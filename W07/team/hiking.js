@@ -72,8 +72,8 @@ const hikeList = [
         document.getElementById(element).innerHTML = eleList;
         if (document.getElementById(element).innerHTML != "") {
             this.setCallbackForClassName("remove", this.removeComment);
-            document.getElementById("addNewComment").addEventListener("click", this.comment.addComment);
         }
+        this.addCommentListener();
     }
 
     listComments () {
@@ -108,11 +108,15 @@ const hikeList = [
       this.listComments();
     }
     addCommentListener() {
-
+      document.getElementById("addNewComment").addEventListener("click", this.comment.addComment);
     }
-    saveComments() {
-
+    saveComments(comment) {
+      commentList = getComments(this.key);
+      commentList.push(comment);
+      console.log('added ' + comment.content + ' to todo list ' + commentList);
+      writeToLS(key, commentList);
     }
+
     setCallbackForClassName (name, callback) {
       let r = document.getElementsByClassName(name);
       console.log(r);
