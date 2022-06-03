@@ -40,11 +40,93 @@ const hikeList = [
     showHikeList();
   });*/
 
+  class newComment {
+    constructor (hikeName, comment, type) {
+      this.name = hikeName;
+      this.date = new Date();
+      this.content = comment;
+      this.type = type;
+    }
+  }
+  const commentList = [];
+
+  class commentManager {
+    constructor (key, element) {
+      this.key = key;
+      this.comments = getComments(this.key);
+      this.element = element;
+    }
+
+    getAllComments() {
+
+    }
+
+    renderCommentList(list, element) {
+        let eleList = "";
+        if (list != []) {
+            for (let l in list) {
+              eleList +=`<li class="comment"><p>${list[l].content}</p><button id="rem_${list[l].id}" class="remove">X</button></li>`;
+            }
+        }
+        console.log(eleList);
+        document.getElementById(element).innerHTML = eleList;
+        if (document.getElementById(element).innerHTML != "") {
+            this.setCallbackForClassName("remove", this.removeComment);
+        }
+    }
+
+    listComments () {
+      console.log(this.element);
+      commentList = getComments(this.key);
+      this.renderCommentList(commentList, this.element);
+    }
+
+    filterCommentsByName(list, name) {
+      let newList = [];
+      for (let i in list) {
+        if (list[i].name == name) {
+          newList.push(list[i])
+        }
+      }
+      this.renderCommentList(newList, this.element);
+    }
+
+    addComment() {
+      let name = document.getElementById("hikeNameInput").value;
+      let type = document.getElementById("hikeTypeInput").value;
+      let content = document.getElementById("hikeContentInput").value;
+      let comment = new newComment(name, content, type);
+      saveTodo(comment, this.key);
+      this.listComments();
+    }
+    removeComment() {
+      let idStr = String(this.date);
+      let id = parseInt(idStr.substring(4));
+      console.log("removeComments() called " + id);
+      removeComments(id, this.key);
+      this.listComments();
+    }
+    addCommentListener() {
+
+    }
+    saveComments() {
+
+    }
+    setCallbackForClassName (name, callback) {
+      let r = document.getElementsByClassName(name);
+      console.log(r);
+      for (let i of r) {
+          ['touch', 'click'].forEach(e => i.addEventListener(e, callback));
+      }
+  }
+  }
+
   export default class Hikes {
     constructor(elementId) {
       this.parentElement = document.getElementById(elementId);
       // we need a back button to return back to the list. This will build it and hide it. When we need it we just need to remove the 'hidden' class
       this.backButton = this.buildBackButton();
+      this.comments = new commentManager("test01", "ul");
     }
     // why is this function necessary?  hikeList is not exported, 
     //and so it cannot be seen outside of this module. I added this in case 
@@ -122,6 +204,9 @@ const hikeList = [
               <h3>Difficulty</h3>
               <p>${hike.difficulty}</p>
           </div>
+          <div>
+            <ul id="${hike.name}-list"></ul>
+          </div>
   </div>`;
   
     return item;
@@ -148,7 +233,49 @@ const hikeList = [
               <h3>How to get there</h3>
               <p>${hike.directions}</p>
           </div>
+          <div>
+            <form>
+              <input placeholder="Enter Name of Hike" id="hikeNameInput"/>
+              <input placeholder="Enter Comment" id="hikeCommentInput"/>
+              <input placeholder="Enter Type of Comment" id="hikeTypeInput"/>
+            </form>
+            <ul id="${hike.name}-list"></ul>
+          </div>
       
       `;
     return item;
   }
+
+
+function readFromLS(key) {
+  let seri = localStorage.getItem(key);
+  console.log("read from ls");
+  if (seri != null) {
+      return JSON.parse(seri);
+  }
+  return [];
+}
+
+function writeToLS(key, data) {
+  let seri = JSON.stringify(data);
+  localStorage.setItem(key, seri);
+  console.log("write to ls " + key);
+}
+
+function getComments (key) {
+  if (toDoList == null) {
+      toDoList = readFromLS(key);
+      console.log("updated toDoList");
+  }
+  return toDoList;
+}
+
+function removeComments (id, key) {
+  toDoList = getComments(key);
+  let index = toDoList.findIndex((x) => x.id === id);
+  toDoList.splice(index, 1);
+      
+  console.log('removed ' + id + ' from todo list');
+  console.log(toDoList);
+  writeToLS(key, toDoList);
+}
