@@ -72,6 +72,7 @@ const hikeList = [
         document.getElementById(element).innerHTML = eleList;
         if (document.getElementById(element).innerHTML != "") {
             this.setCallbackForClassName("remove", this.removeComment);
+            document.getElementById("addNewComment").addEventListener("click", this.comment.addComment);
         }
     }
 
@@ -243,7 +244,6 @@ const hikeList = [
           </div>
       
       `;
-      document.getElementById("addNewComment").addEventListener("click", this.comment.addComment);
     return item;
   }
 
