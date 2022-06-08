@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width:device-width, initial-scale:1.0">
+        <link rel="stylesheet" href="portfolio-WDD330\main.css">
+        
+    </head>
+    <body>
+        <h1>WDD330 Portfolio</h1>
+        <h2> </h2>
+        
+
+        <ol>
+            <li><p>
+                This feels like it will relate to the SVG I've been learning in my other class. SVG is fun. 
+                IDK how to do it complex yet, but it's fun. I made some <a href="https://codepen.io/jadynbug/pen/OJQvGGW">playing card backs</a>.
+            </p></li>
+            <li>
+                <h3>Transform</h3>
+                <p>Transforms don't work on inline elements. Add display: inline-block;</p>
+                <p>translate lets you move an object across (x, y). Or tanslateX(x), translateY(y)</p>
+                <p>Scale scales an object both x and y. scale(x, y) or scale(x) which uses that same value for both x and y</p>
+                <p>Rotate rotates and object a certain number of degrees from it's center. rotate(45deg)</p>
+                <p>Skew lets you scew an object along x and y axis. skew(x, y) or just x. skew(x)</p>
+                <p>transform-orgin: 0 0; means that your object can rotate on a different point instead of the default center</p>
+                <p>check your oder. if you rotate first you translate down a different x y axis.</p>
+            </li>
+            <li>
+                <h2>Translation</h2>
+                <p>Translation lets you make a change in color/design less sudden</p>
+                <p>You need to set a before and after for each property translated. like "a" vs "a:hover"</p>
+                <p>transition-property declares what properties can be translated</p>
+                <p>transistion-duration declares how long it should take to get from pre to post</p>
+                <p>transition-timing-function lets you declare is you want it fast at first, slow, slow at first, ect.</p>
+                <p>transistion-delay lets you add a delay timer before the transitions happen. A negative delay will let it start in the middle</p>
+                <p>If you synce the timming function and the property declaration you can have different things change at different paces</p>
+            </li>
+            <li>
+                <h3>Animations</h3>
+                <p>animations use keyframes to set up many transitions in a sequence.</p>
+                <pre>
+                    @keyframes moveRight { 
+                        from {
+                        transform: translateX(-50%);
+                        }
+                        to {
+                        transform: translateX(50%);
+                        }
+                    }
+                    
+                    @keyframes appearDisappear { 
+                        0%, 100% {
+                        opacity: 0;
+                        }
+                        20%, 80% {
+                        opacity: 1;
+                        }
+                    }
+                    
+                    @keyframes bgMove {
+                        100% {
+                        background-position: 120% 0;
+                        }
+                    }
+                </pre>
+                <p>you make keyframes and then assign things to use them:<br>
+                    animation-name: appearDisappear;</p>
+                <p>animation-duration declares how long an animation has to go from 0% - 100%</p>
+                <p>animation-timing-function declares what speed the animation is executed. Fast, slow, a mix?</p>
+                <p>steps() lets you move multiple pics through the background to make it look like it's moving???</p>
+                <p>animation-iteration-count declares how many times an animation will play through. 1? infinite?</p>
+                <p>animation-direction what if you want to go in reverse? try this one.</p>
+                <p>animation-delay lets start late or in the middle.</p>
+                <p>animation-fill-mode declares what happens between end and restart</p>
+                <p>animation-play-state declare if the animation is playing or paused</p>
+                <p>There's a shorthand. I'm not putting it in cuz I know I'm not ready to use it.</p>
+            </li>
+            <li>
+                <h3>Canvas</h3>
+                <p>You set the width and height on the element because that defines your grid.</p>
+                <p>You draw on the canvas using a JS API</p>
+                <p>First set up the context</p>
+                <pre>
+                    var canvas = document.getElementById("myCanvas");
+                    var context = canvas.getContext("2d");</pre>
+                <p>Then you set up your brush using strokestyle or fillstyle</p>
+                <pre>
+                    context.strokeStyle = "red";</pre>
+                <p>If you want a shape to have a outline and a fill you define both</p>
+                <pre>context.strokeStyle = "red";
+                    context.fillStyle = "rgba(0, 0, 255, 0.5)";</pre>
+                <p>To draw you use strokeshape and fillshape. In this instance, strokerect and fillrect</p>
+                <pre>
+                    context.fillRect(10, 10, 100, 100);   
+                    context.strokeRect(10, 10, 100, 100);</pre>
+                <p>Drawing shapes use the grid to draw. It takes the x,y and then the sides a,b. So, strokeshape(x,y, a,b</p>
+                <p>the canvas's top left is 0,0 and it's bottom right is 200,200 (or whatever width/height you set)</p>
+                <p>Canvas drawing looks complex and more annoying than SVG. SVG makes more sense to me.</p>
+                <p>Canvas can hold and manipulate images. Even change them from color to grayscale. Tho it looks cumbersum<br>
+                    It can do the same with videos</p>
+            </li>
+            <li>
+                <h3>SVG</h3>
+                <p>SVG connects to the DOM</p>
+                <p>SVG has a cool library called Raphaël</p>
+                <p>I plan to do more research on this cuz I like working with SVG so far. It's fun.</p>
+            </li>
+            <li>
+                <p>So making stuff dragable is a thing. IDK much about. I will probably do more research on it as it sounds 
+                    both fun and annoying.
+                </p>
+            </li>
+            
+        </ol>
+
+        <footer><a href="../index.html">Home</a></footer>
+    </body>
+</html>
