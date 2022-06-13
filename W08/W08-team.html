@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width:device-width, initial-scale:1.0">
+        <link rel="stylesheet" href="../main.css">
+        
+    </head>
+    <body>
+        <h1>WDD330 Portfolio</h1>
+        <h2>Week 8 team</h2>
+        
+
+        <div class="box">
+            <ul id="lister">
+                <li>Sup</li>
+            </ul>
+            <div class="button-box">
+                <button id="prev" onclick="">Prev</button>
+                <button id="next" onclick="">Next</button>
+            </div>
+        </div>
+
+        <footer><a href="../index.html">Home</a></footer>
+
+        <style>
+            .box {
+                width: 400px;
+                display: flex;
+                flex-direction: column;
+                background-color: palevioletred;
+                margin-right: auto;
+                margin-left: auto;
+                border: solid darkblue;
+            }
+            .button-box {
+                display: flex;
+                justify-content: space-around;
+                padding: 10px;
+            }
+            button {
+                height: 40px;
+                width: 80px;
+                background-color: darkblue;
+                color: white;
+            }
+            #lister {
+                flex-grow: 2;
+                list-style: none;
+                color: darkblue;
+                text-align: center;
+                margin: 0;
+                padding: 5px;
+            }
+            li {
+                padding: 5px;
+                margin-top: 15px;
+                background-color: darkblue;
+                color: white;
+            }
+        </style>
+        <script> 
+            const myHeaders = new Headers();
+            const myUrl = 'https://pokeapi.co/api/v2/berry';
+            let nUrl = "";
+            let pUrl = "";
+            let listOBerries = [];
+            const ul = document.getElementById("lister");
+
+            const myRequest = new Request(myUrl, {
+            method: 'GET',
+            headers: myHeaders,
+            mode: 'cors',
+            cache: 'default',
+            });
+
+            function fetchIt (r) {
+                fetch(r)
+                    .then(response => response.json())
+                    .then(myJson => {
+                        if (myJson.next) {
+                            nUrl = myJson.next;
+                        }
+                        if (myJson.previous) {
+                            pUrl = myJson.previous;
+                        }
+                        console.log(nUrl);
+                        console.log(pUrl);
+                        listOBerries = myJson.results;
+                        console.log(listOBerries);
+                        let content = "";
+
+                        listOBerries.forEach(element => {
+                            let mess = `<li class="berry" name="${element.url}">${element.name}</li>`
+                            content += mess;
+                            console.log(mess);
+                            ul.innerHTML = content;
+                        });
+                        console.log(myJson);
+                        //setupListeners();
+                    });
+            }
+
+            function fetchDetails (b) {
+                let berry = b.name;
+                let firmness= "";
+                let size = "";
+                let roundness = "";
+                let berryItem = "";
+                let detailedRequest = new Request(berry, {
+                    method: 'GET',
+                    headers: myHeaders,
+                    mode: 'cors',
+                    cache: 'default',
+                });
+                fetch(detailedRequest).then(response => response.json()).then(myJson => {
+                    console.log(myJson);
+                });
+            }
+
+
+
+            function clickNext () {
+                if (nUrl != '') {
+                    let nextRequest = new Request(nUrl, {
+                        method: 'GET',
+                        headers: myHeaders,
+                        mode: 'cors',
+                        cache: 'default',
+                        });
+                    fetchIt(nextRequest);
+                }
+                else {
+                    console.log("End of List");
+                }
+            }
+
+            function clickPrev () {
+                if (nUrl != '') {
+                    let prevRequest = new Request(pUrl, {
+                        method: 'GET',
+                        headers: myHeaders,
+                        mode: 'cors',
+                        cache: 'default',
+                        });
+                    fetchIt(prevRequest);
+                }
+                else {
+                    console.log("Beginning of List");
+                }
+            }
+            function setupListeners () {
+                let lis = document.getElementsByClassName("berry");
+                console.log(lis);
+                if(lis != null || lis != undefined) {
+                    for (let i =0; i > lis.length(); i ++) {
+                        lis[i].addEventListener("click", function() {
+                            fetchDetails();
+                        })
+                    }
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                fetchIt(myRequest);
+                });
+            document.getElementById("next").addEventListener("click", function() {
+                clickNext();
+            });
+            document.getElementById("prev").addEventListener("click", function() {
+                clickPrev();
+            });
+        </script>
+    </body>
+</html>
