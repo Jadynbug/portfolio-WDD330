@@ -12,8 +12,51 @@
         
 
         <ol>
+            <li><p>
+                Did you know you can put more than one animation on an element by use of the comma? 
+                Why didn't any of the reading and whatever else say that? HUH??? Why did I have to spend most of last 
+                week failing to google it only to find in an example on a blogpost about cool animation examples?<br> ARRRRRRRRRRRRRG!!!!!!!!!!!!!!
+            </p></li>
+            <li>
+                <p>BOM == browser object model</p>
+                <p>alert, prompt, and confirm are originally browser functions. They can be accessed through the window</p>
+                <p>window.navigator.userAgent will tell you info about the browser and the user divice. It can be tweaked so be wary.</p>
+                <p>window.location.href will return the href of the current website as a string</p>
+                <p>window.location.protocol will return https:, http:, pop2:, etc</p>
+                <P>widonw.location.host will return the domain and the port number of the current url</P>
+                <p>window.location.hostname will return the domain</p>
+                <p>window.location.port will return the port number</p>
+                <p>window.location.pathname will return the a string of the path of the domain</p>
+                <p>window.location.search needs a ? and perameters</p>
+                <p>window.location.hash returns any fragments</p>
+                <p>window.location.orgin reads the url incuding the protocol</p>
+                <p>window.location.reload() will reload the page</p>
+                <p>window.location.assign() will let you reassign the url</p>
+                <p>window.location.replace() will reassign the url but won't save it to history so the user can nav back</p>
+                <p>window.location.toString() returns the whole url as a string</p>
+                <br>
+                <p>window.history holds info on all pages visited in the present session</p>
+                <p>window.history.length() returns how many pages have been visited before the current one</p>
+                <p>window.history.go(x) sends the page back to another page on the list. 0 reloads, 1 goes forward, -1 goes to the first page</p>
+                <br>
+                <p>window.open(url, title, variables such as width) opens a new window</p>
+                <p>window.close() closes a window</p>
+                <p>window.moveTo(x,y) moves the window to a coordinance</p>
+                <p>window.resizeTo(width, height) resizes the window</p>
+                <br>
+                <p>window.screen.width returns width</p>
+                <p>window.screen.height returns height</p>
+                <p>window.screen.availWidth returns width + any menus ect</p>
+                <p>window.screen.availHeight returns height + any menus ect</p>
+                <p>window.screen.colorDepth returns the color bit depth of the user's monotor</p>
+            </li>
 
-            
+
+            <li><p>
+                There are inviroments that don't have a window object so you have to use global stuff instead. You can decree gobal = this
+                which may help.
+            </p></li>
+
         </ol>
 
         <footer><a href="../index.html">Home</a></footer>
