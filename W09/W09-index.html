@@ -49,9 +49,53 @@
                 <p>window.screen.availWidth returns width + any menus ect</p>
                 <p>window.screen.availHeight returns height + any menus ect</p>
                 <p>window.screen.colorDepth returns the color bit depth of the user's monotor</p>
+                <br>
+                <p>window.setIntervole(callback, timelapse) will call a callback every timelapse</p>
+                <p>window.clearIntervole(var) can delete a setIntervole once it has been assigned to a variable</p>
+                <br>
+                <p>window.setIntervole can call for an animation to be executed every timelapse</p>
+                <p>window.requestAnimationFrame(animation) does the same, just smoother</p>
             </li>
-
-
+            <li>
+                <p>cookies are little files that store user info so that a site can be personalized without allowing the site
+                    access to info such as other sites the user has visited.
+                </p>
+                <p>cookies are a string containing key value pairs seperated by ;</p>
+                <p>document.cookie = "key=value;"</p>
+                <p>document.cookie returns all cookies</p>
+                <p>cookies are session cookies unless built with an experation date</p>
+                <p>You can set path and domain cookies. document.cookie = "path=/ domain=domainName"</p>
+                <p>adding secure to the cookies makes sure they can only be accessed via https protocol sites</p>
+                <p>to delete a cookie you need to set an experation date that is in the past</p>
+                <p>you can use libraries like jsCookie</p>
+            </li>
+            <li>
+                <p>data- is used to embed data to a a web page using custom attributes that ignored by the browser</p>
+                <p>data-attributes are private to a page and only meant for the js program to touch</p>
+                <p>data-attributes are built into elements
+                    <pre>
+                        div id='hero' data-powers='flight superSpeed'
+                            Superman
+                        div
+                    </pre>
+                    and are accesed,
+                    <pre>
+                        const superman = document.getElementById('hero');
+                        const powers = superman.dataset.powers;
+                    </pre>
+                </p>
+                <p>it can also be accesed via element.getAttribute(attribute)</p>
+            </li>
+            <li>
+                <p>web strorage lets you store key,value pairs that do not expire, are not share with the server every comunication, 
+                    can be accessed in multiple windows as long as they use the same domain, and have more space than cookies
+                </p>
+                <p>localStorage.setItem(key, value)</p>
+                <p>localStorage.getItem(key)</p>
+                <p>localStorage.removeItem(key)</p>
+                <p>localStorage.clear() deletes everything in the local storage</p>
+            </li>
+            
             <li><p>
                 There are inviroments that don't have a window object so you have to use global stuff instead. You can decree gobal = this
                 which may help.
