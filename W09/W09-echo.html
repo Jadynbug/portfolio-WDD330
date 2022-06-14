@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Websocket Example</title>
+</head>
+<body>
+    <form>
+        <label for='message'>Enter a Message:</label>
+        <input type='text' name='message'>
+        <button type='submit'>Submit</button>
+    </form>
+    <div id='output'></div>
+    <script>
+        const URL = 'wss://echo.websocket.org/';
+        const outputDiv = document.getElementById('output');
+        const form = document.forms[0];
+        const connection = new WebSocket(URL);
+
+        function output(message) {
+            const para = document.createElement('p');
+            para.innerHTML = message;
+            outputDiv.appendChild(para);
+        }
+
+        function message(event) {
+            event.preventDefault();
+            const text = form.message.value;
+            output(`SENT: ${text}`);
+            connection.send(text);
+        }
+
+        connection.addEventListener('open', () => {
+            output('CONNECTED');
+        }, false);
+        connection.addEventListener('message', (event) => {
+            output(`RESPONSE: ${event.data}`);
+        }, false);
+        connection.addEventListener('close', () => {
+            output('DISCONNECTED');
+        }, false);
+
+        connection.addEventListener('error', (event) => {
+            output(`<span style='color: red;'>ERROR: ${event.data}</span>`);
+        }, false);
+        form.addEventListener('submit', message, false);
+
+
+    </script>
+</body>
+</html>
