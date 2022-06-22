@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Shadows+Into+Light&display=swap");
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Permanet Marker";
+}
+
+body {
+  font-family: "Shadows Into Light";
+}
+
+#lister, #searcher, #bowler {
+  border: solid #3C91DB 5px;
+  border-radius: 0 50px 0 50px;
+  display: none;
+}
+
+/*# sourceMappingURL=fruit.css.map */

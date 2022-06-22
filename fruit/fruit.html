@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>The BlueBerry Stand</title>
+        <link href="./fruit.css">
+        <script src="./fruit.js" type="module"></script>
+    </head>
+    <body>
+        <header>
+            <img id="icon" class="berries">
+            <h1>The BlueBerry Stand</h1>
+        </header>
+        <div id="options">
+            <div id="listMe">List of Fruit</div>
+            <div id="searchMe">Search Fruit</div>
+            <div id="bowlMe">Fruit Bowl</div>
+        </div>
+        <div id="lister">
+            fruit list
+        </div>
+        <div id="searcher">
+            search fruit
+        </div>
+        <div id="bowler">
+            bowl of fruit
+        </div>
+
+        <script>
+            const listclick = document.getElementById("listMe");
+            const searchClick = document.getElementById("searchMe");
+            const bowlClick = document.getElementById("bowlMe");
+
+            function switcher (target) {
+                console.log(target.id);
+                switch (target.id) {
+                    case "listMe":
+                        listclick.style.display = "block";
+                        searchClick.style.display = "none";
+                        bowlClick.style.display = "none";
+                        break;
+                    case "searchMe":
+                        listclick.style.display = "none";
+                        searchClick.style.display = "block";
+                        bowlClick.style.display = "none";
+                        break;    
+                    case "bowlMe": 
+                        listclick.style.display = "none";
+                        searchClick.style.display = "none";
+                        bowlClick.style.display = "block";
+                        break;                
+                    default:
+                        break;
+                }
+            }
+
+            listclick.addEventListener("click", switcher);
+            searchClick.addEventListener("click", switcher);
+            bowlClick.addEventListener("click", switcher);
+        </script>
+    </body>
+</html>
