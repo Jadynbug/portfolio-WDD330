@@ -5,12 +5,62 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
   font-family: "Shadows Into Light";
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  background-color: #BBFFA0;
+  border: solid 2px #26da20;
+  color: #A4775A;
+  margin-bottom: 10px;
+}
+header #icon {
+  width: 250px;
+  height: auto;
+  margin: 5px;
+}
+header h1 {
+  margin: 0;
+  padding: 10px;
+}
+
+#options {
+  display: flex;
+  justify-content: space-around;
+  background-color: #A4775A;
+}
+#options div {
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  font-size: large;
+}
+
+.clicked {
+  background-color: #3C91DB;
 }
 
 #lister, #searcher, #bowler {
+  display: none;
+}
+
+#viewBox {
+  margin-top: 10px;
   border: solid #3C91DB 5px;
   border-radius: 0 50px 0 50px;
-  display: none;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+#lister.seen, #searcher.seen, #bowler.seen {
+  display: block;
 }
 
 /*# sourceMappingURL=fruit.css.map */

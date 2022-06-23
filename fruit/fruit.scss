@@ -12,15 +12,61 @@ $blue: #3C91DB;
 $darkGreen: #26da20;
 $brown: #A4775A;
 
+
 h1, h2, h3, h4, h5, h6 {
     font-family: $titleFont;
 }
 body {
     font-family: $bodyFont;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+header {
+    display: flex;
+    align-items: center;
+    background-color: $lightGreen;
+    border: solid 2px $darkGreen;
+    color: $brown;
+    margin-bottom: 10px;
+    & #icon {
+        width: 250px;
+        height: auto;
+        margin: 5px;
+    }
+    & h1 {
+        margin: 0;
+        padding: 10px;
+    }
 }
 
+#options {
+    display: flex;
+    justify-content: space-around;
+    background-color: $brown;
+    & div {
+        color: white;
+        text-align: center;
+        padding: 10px;
+        font-weight: bold;
+        font-size: large;
+    }
+}
+.clicked {
+    background-color: $blue;
+}
 #lister, #searcher, #bowler {
+    display: none;
+}
+#viewBox {
+    margin-top: 10px;
     border: solid $blue 5px;
     border-radius: 0 50px 0 50px;
-    display: none;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+#lister.seen, #searcher.seen, #bowler.seen {
+    display: block;
 }
