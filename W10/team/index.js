@@ -1,4 +1,4 @@
-import QuakesController from './team/QuakeController.js';
+import QuakesController from './QuakeController.js';
 import buildNavigation from './routing.js';
 
 const navElement = document.getElementById('mainNav');
