@@ -35,6 +35,10 @@ export default class QuakesController {
   async getQuakesByRadius(radius = 100) {
     //set loading message
     document.querySelector('#quakeList').innerHTML = "<li>Loading...</li>";
+    let input = document.getElementById("input").value; 
+    if (input != NaN || input != null || input != undefined) {
+      radius = input;
+    }
     
     console.log(document.querySelector('#quakeList'))
     
