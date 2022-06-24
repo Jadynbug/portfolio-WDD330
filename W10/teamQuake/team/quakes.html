@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Local Quakes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="a local earthquake list" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Local Quakes</h1>
+      <div id="linkBtn">
+        <nav><ul id="mainNav"></ul></nav>
+        <button onClick="window.location.reload();">🔄</button>
+      </div>
+    </header>
+    <main id="content">
+      <h2>Quake List</h2>
+      <ul id="quakeList" class="hikeStyles"></ul>
+      <!-- <label>What radius? <input type='number' id='radius' name='radius'></label> -->
+    </main>
+
+    <script src="js/index.js" type="module"></script>
+  </body>
+</html>

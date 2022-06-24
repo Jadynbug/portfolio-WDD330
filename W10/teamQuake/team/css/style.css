@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: tan;
+  text-align: center;
+}
+li {
+  margin: 0.8em;
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+  margin: 1em;
+}
+nav ul li:hover {
+  background-color: black;
+  padding: 0.5em;
+}
+#quakeList {
+  margin: 2%;
+  padding: 2%;
+  background-color: white;
+}
+#linkBtn, nav ul {
+  background-color: chocolate;
+  display: flex;
+  justify-content: center;
+  padding: 0.3em
+}
+button {
+  width: 3em;
+  height: 3em;
+  /* margin-top: 0.4em; */
+  margin: 0.4em 1em 0;
+}
+h1 {
+  /* margin: 0.5em; */
+  background-color: chocolate;
+  color: black;
+  padding: 0.5em;
+  border-bottom: 2px solid whitesmoke;
+}
+h2 {
+  margin: 1em;
+}
