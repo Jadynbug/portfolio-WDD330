@@ -70,3 +70,37 @@ header {
 #lister.seen, #searcher.seen, #bowler.seen {
     display: block;
 }
+div.container ul li {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: solid $blue 5px;
+    border-radius: 15px;
+    padding: 5px;
+    text-align: center;
+    margin: 5px;
+}
+ul {
+    list-style: none;
+    margin: 5px;
+    padding: 5px;
+}
+li button.details-btn {
+    background-color: $brown;
+    color: white;
+    width: 120px;
+    height: 30px;
+}
+li button.add {
+    background-color: $darkGreen;
+    color: white;
+    width: 120px;
+    height: 30px;
+}
+li div.details-div {
+    text-align: center;
+    display: none;
+}
+li * {
+    align-self: center;
+    justify-self: center;
+}

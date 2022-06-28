@@ -1,6 +1,6 @@
 
 let options = [...document.querySelectorAll("#options div")];
-let views = [...document.querySelectorAll("#viewBox div")];
+let views = [...document.querySelectorAll("#viewBox div.container")];
 
 class Model {
     constructor() {}
@@ -25,11 +25,12 @@ class View {
     }
     switcher(event) {
         options.forEach(e => {
-            if (e.id === event.target.id) {
-                document.getElementById(e.id).classList.add("clicked");
+            let element = document.getElementById(e.id);
+            if (element.id === event.target.id) {
+                element.classList.add("clicked");
             }
             else {
-                document.getElementById(e.id).classList.remove("clicked");
+                element.classList.remove("clicked");
             }
         })
         views.forEach(e => {
