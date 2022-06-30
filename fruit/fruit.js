@@ -47,7 +47,24 @@ class View {
         options.forEach(e => {e.addEventListener("click", this.switcher)})
         document.getElementById("viewBox").addEventListener("click", (e) => {
             if (e.target.classList.contains("details-btn")) {
-                fetchAll();
+                //fetchAll();
+                let client = new HttpClient();
+                client.get('https://www.fruityvice.com/api/fruit/Banana', (response) => {
+                    console.log(response, response.json());
+                });
+                /*let express = require('express')
+                let cors = require('cors')
+                let app = express()
+                
+                app.use(cors())
+                
+                app.get('https://www.fruityvice.com/api/fruit/Banana', function (req, res, next) {
+                res.json({msg: 'This is CORS-enabled for all origins!'})
+                })
+                
+                app.listen(80, function () {
+                console.log('CORS-enabled web server listening on port 80')
+                })*/
             }
             else if (e.target.classList.contains("add")) {
                 console.log(e.target.parentNode);
@@ -86,7 +103,13 @@ function writeToLS(key, data) {
 }
 
 function fetchAll () {
-    const myHeaders = new Headers();
+
+    let http = new XMLHttpRequest();
+    http.onload((response) => console.log(response.json()));
+    http.open("GET", "https://www.fruityvice.com/api/fruit/all", true);
+    http.sent();
+
+    /*const myHeaders = new Headers();
     //myHeaders.set("orgin", "https://www.fruityvice.com");
     myHeaders.set("Access-Control-Allow-Origin", "https://jadynbug.github.io")
     //myHeaders.set("orgin", "https://jadynbug.github.io/portfolio-WDD330/fruit/fruit.html");
@@ -111,7 +134,7 @@ function fetchAll () {
         return response.json();
      })
      .then(data => {
-         /* process your data further */
+          process your data further 
      })
      .catch(error => console.error(error));
     /*.then((response) => {
@@ -125,3 +148,18 @@ function fetchAll () {
         console.log(response);
     });*/
 };
+
+class HttpClient {
+    constructor () {
+        this.get = function(aUrl, aCallback) {
+            var anHttpRequest = new XMLHttpRequest();
+            anHttpRequest.onreadystatechange = function() { 
+                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                    aCallback(anHttpRequest.responseText);
+            }
+    
+            anHttpRequest.open( "GET", aUrl, true );            
+            anHttpRequest.send();
+        }
+    }
+}
