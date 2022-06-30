@@ -45,6 +45,15 @@ class View {
     }
     setupInitListeners() {
         options.forEach(e => {e.addEventListener("click", this.switcher)})
+        document.getElementById("viewBox").addEventListener("click", (e) => {
+            if (e.target.classList.contains("details-btn")) {
+                fetchAll();
+            }
+            else if (e.target.classList.contains("add")) {
+                console.log(e.target.parentNode);
+            }
+        })
+
     }
 
 
@@ -75,3 +84,42 @@ function writeToLS(key, data) {
     localStorage.setItem(key, seri);
     console.log("write to ls " + key);
 }
+
+function fetchAll () {
+    const myHeaders = new Headers();
+    myHeaders.set("orgin", "https://www.fruityvice.com");
+    myHeaders.set("Access-Control-Allow-Origin", "https://www.fruityvice.com")
+
+    const myRequest = new Request('https://www.fruityvice.com/api/fruit/all', {
+    method: 'GET',
+    headers: myHeaders,
+    mode: 'cors',
+    cache: 'default',
+    credentials: "include",
+    });
+
+    console.log(myRequest);
+
+    fetch(myRequest)
+    .then(response => {
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+          throw new TypeError("Oops, we haven't got JSON!");
+        }
+        return response.json();
+     })
+     .then(data => {
+         /* process your data further */
+     })
+     .catch(error => console.error(error));
+    /*.then((response) => {
+        if (!response.ok) {
+           return response.text().then(result => Promise.reject(new Error(result)));
+        }
+    
+        return response.json();
+    })
+    .then((response) => {
+        console.log(response);
+    });*/
+};
