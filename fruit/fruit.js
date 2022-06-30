@@ -89,7 +89,8 @@ function fetchAll () {
     const myHeaders = new Headers();
     //myHeaders.set("orgin", "https://www.fruityvice.com");
     myHeaders.set("Access-Control-Allow-Origin", "https://jadynbug.github.io")
-    myHeaders.set("orgin", "https://jadynbug.github.io/portfolio-WDD330/fruit/fruit.html");
+    //myHeaders.set("orgin", "https://jadynbug.github.io/portfolio-WDD330/fruit/fruit.html");
+    myHeaders.set("orgin", "https://jadynbug.github.io");
 
     const myRequest = new Request('https://www.fruityvice.com/api/fruit/all', {
     method: 'GET',
