@@ -47,11 +47,31 @@ class View {
         options.forEach(e => {e.addEventListener("click", this.switcher)})
         document.getElementById("viewBox").addEventListener("click", (e) => {
             if (e.target.classList.contains("details-btn")) {
+                const myHeaders = new Headers();
+                const myRequest = new Request('https://www.fruityvice.com/api/fruit/all') /*, {
+                method: 'GET',
+                headers: myHeaders,
+                mode: 'cors',
+                cache: 'default',
+                credentials: "include",
+                });*/
+                fetch(myRequest)
+                .then(response => {
+                    const contentType = response.headers.get('content-type');
+                    if (!contentType || !contentType.includes('application/json')) {
+                      throw new TypeError("Oops, we haven't got JSON!");
+                    }
+                    return response.json();
+                 })
+                 .then(data => {
+                     console.log(data);
+                 })
+                 .catch(error => console.error(error));
                 //fetchAll();
-                let client = new HttpClient();
+                /*let client = new HttpClient();
                 client.get('https://www.fruityvice.com/api/fruit/Banana', (response) => {
                     console.log(response, response.json());
-                });
+                });8?
                 /*let express = require('express')
                 let cors = require('cors')
                 let app = express()
@@ -104,10 +124,10 @@ function writeToLS(key, data) {
 
 function fetchAll () {
 
-    let http = new XMLHttpRequest();
+    /*let http = new XMLHttpRequest();
     http.onload((response) => console.log(response.json()));
     http.open("GET", "https://www.fruityvice.com/api/fruit/all", true);
-    http.sent();
+    http.sent();*/
 
     /*const myHeaders = new Headers();
     //myHeaders.set("orgin", "https://www.fruityvice.com");
