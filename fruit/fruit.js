@@ -158,7 +158,7 @@ class HttpClient {
                     aCallback(anHttpRequest.responseText);
             }
             anHttpRequest.open( "GET", aUrl, true );   
-            anHttpRequest.setRequestHeader('access-control-allow-origin', "https://github.com");         
+            anHttpRequest.setRequestHeader('access-control-allow-origin', "https://github.io");         
             anHttpRequest.send();
         }
     }
