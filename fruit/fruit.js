@@ -160,6 +160,7 @@ class HttpClient {
             anHttpRequest.open( "GET", aUrl, true );   
             anHttpRequest.setRequestHeader("content-type", "application/json");      
             anHttpRequest.setRequestHeader('access-control-allow-origin', "https://github.io"); 
+            anHttpRequest.onload(console.log(response));
             console.log(anHttpRequest);  
             anHttpRequest.send();
         }
