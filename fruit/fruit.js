@@ -158,8 +158,11 @@ class HttpClient {
                     aCallback(anHttpRequest.responseText);
             }
             anHttpRequest.open( "GET", aUrl, true );   
-            anHttpRequest.setRequestHeader("content-type", "application/json");      
-            anHttpRequest.setRequestHeader('access-control-allow-origin', "https://github.io"); 
+            anHttpRequest.setRequestHeader("content-type", "application/json");   
+            anHttpRequest.setRequestHeader("accept", "application/json");
+            anHttpRequest.setRequestHeader("orgin", "https://jadynbug.github.io/portfolio-WDD330/fruit/fruit.html");
+
+            anHttpRequest.setRequestHeader('access-control-allow-origin', "*"); 
             //anHttpRequest.onload(console.log(response));
             console.log(anHttpRequest);  
             anHttpRequest.send();
