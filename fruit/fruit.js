@@ -157,7 +157,7 @@ class HttpClient {
                 if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
                     aCallback(anHttpRequest.responseText);
             }
-    
+            anHttpRequest.setRequestHeader('access-control-allow-origin', "http://localhost:1234");
             anHttpRequest.open( "GET", aUrl, true );            
             anHttpRequest.send();
         }
