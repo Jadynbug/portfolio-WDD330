@@ -162,7 +162,7 @@ class HttpClient {
             anHttpRequest.setRequestHeader("accept", "application/json");
             anHttpRequest.setRequestHeader("orgin", "https://jadynbug.github.io/portfolio-WDD330/fruit/fruit.html");
 
-            anHttpRequest.setRequestHeader('Access-Control-Allow-Origin', "*"); 
+            anHttpRequest.setRequestHeader('Access-Control-Allow-Origin', "https://www.fruityvice.com/"); 
             //anHttpRequest.onload(console.log(response));
             console.log(anHttpRequest);  
             anHttpRequest.send();
