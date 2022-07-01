@@ -157,8 +157,8 @@ class HttpClient {
                 if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
                     aCallback(anHttpRequest.responseText);
             }
-            anHttpRequest.setRequestHeader('access-control-allow-origin', "http://localhost:1234");
-            anHttpRequest.open( "GET", aUrl, true );            
+            anHttpRequest.open( "GET", aUrl, true );   
+            anHttpRequest.setRequestHeader('access-control-allow-origin', "https://jadynbug.github.io/portfolio-WDD330/fruit/fruit.html");         
             anHttpRequest.send();
         }
     }
