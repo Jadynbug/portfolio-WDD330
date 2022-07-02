@@ -1,9 +1,17 @@
 
 let options = [...document.querySelectorAll("#options div")];
 let views = [...document.querySelectorAll("#viewBox div.container")];
+let listOBerries1 = [];
+let listOBerries2 = [];
+let bowlOBerries = [];
 
 class Model {
-    constructor() {}
+    constructor(name, fullname, size, smoothness) {
+        this.name = name;
+        this.fullName = fullname;
+        this.size = size,
+        this.smoothness = smoothness;
+    }
 }
 
 class View {
@@ -23,6 +31,44 @@ class View {
             }
         })
     }
+    renderLister (array) {
+        let content;
+        array.forEach(element => {
+            let mess = `<li class="berry" name="${element.url}">${element.name}<button class="details">Details</button><button class="add">Add to berry bowl</button></li>`
+            content += mess;
+            console.log(mess);
+        });
+        return content;
+    }
+    setBtnListeners () {
+        let buttons = [...document.querySelector("button")];
+        buttons.forEach((button) => {
+            if (button.classList.contains("detals-btn")) {
+                button.addEventListener("click", () => {
+                    console.log("details, details");
+                })
+            }
+            if (button.classList.contains("add")) {
+                button.addEventListener("click", () => {
+                    console.log("adding, adding");
+                })
+            }
+        })
+    }
+    render() {
+        let filter = document.querySelector('.clicked').id;
+        if (filter == "lister") {
+            let stuff = this.renderLister(listOBerries2);
+            document.querySelector("#lister ul").innerHTML = stuff;
+        }
+        if (filter == "searcher") {
+            console.log("preping searcher");
+        }
+        if (filter == "bowler") {
+            console.log("preparing bowler");
+        }
+        this.setBtnListeners();        
+    }
     switcher(event) {
         options.forEach(e => {
             let element = document.getElementById(e.id);
@@ -41,56 +87,9 @@ class View {
                 document.getElementById(e.id).classList.remove("seen");
             }
         })
-        console.log(this);
     }
     setupInitListeners() {
-        options.forEach(e => {e.addEventListener("click", this.switcher)})
-        document.getElementById("viewBox").addEventListener("click", (e) => {
-            if (e.target.classList.contains("details-btn")) {
-                const myHeaders = new Headers();
-                const myRequest = new Request('https://www.fruityvice.com/api/fruit/all') /*, {
-                method: 'GET',
-                headers: myHeaders,
-                mode: 'cors',
-                cache: 'default',
-                credentials: "include",
-                });*/
-                fetch(myRequest)
-                .then(response => {
-                    const contentType = response.headers.get('content-type');
-                    if (!contentType || !contentType.includes('application/json')) {
-                      throw new TypeError("Oops, we haven't got JSON!");
-                    }
-                    return response.json();
-                 })
-                 .then(data => {
-                     console.log(data);
-                 })
-                 .catch(error => console.error(error));
-                //fetchAll();
-                /*let client = new HttpClient();
-                client.get('https://www.fruityvice.com/api/fruit/Banana', (response) => {
-                    console.log(response, response.json());
-                });8?
-                /*let express = require('express')
-                let cors = require('cors')
-                let app = express()
-                
-                app.use(cors())
-                
-                app.get('https://www.fruityvice.com/api/fruit/Banana', function (req, res, next) {
-                res.json({msg: 'This is CORS-enabled for all origins!'})
-                })
-                
-                app.listen(80, function () {
-                console.log('CORS-enabled web server listening on port 80')
-                })*/
-            }
-            else if (e.target.classList.contains("add")) {
-                console.log(e.target.parentNode);
-            }
-        })
-
+        options.forEach(e => {e.addEventListener("click", this.switcher)});
     }
 
 
@@ -99,8 +98,26 @@ class View {
 class Controller {
     constructor(view) {
         this.v = view;
+        
 
         this.v.setupInitListeners();
+        this.fetchIt("https://pokeapi.co/api/v2/berry?limit=10000&offset=0");
+    }
+
+    fetchIt (r) {
+        fetch(r)
+            .then(response => response.json())
+            .then(myJson => {
+                listOBerries1 = myJson.results;
+                listOBerries1.forEach((berry) => {
+                    fetch(berry.url).then(response => response.json())
+                    .then(myJson => {
+                        let item = new Model(myJson.name, myJson.item.name, myJson.size, myJson.smoothness);
+                        listOBerries2.push(item);
+                    })
+                })
+                console.log(listOBerries2);                
+            });
     }
 }
 
@@ -120,72 +137,4 @@ function writeToLS(key, data) {
     let seri = JSON.stringify(data);
     localStorage.setItem(key, seri);
     console.log("write to ls " + key);
-}
-
-function fetchAll () {
-
-    /*let http = new XMLHttpRequest();
-    http.onload((response) => console.log(response.json()));
-    http.open("GET", "https://www.fruityvice.com/api/fruit/all", true);
-    http.sent();*/
-
-    /*const myHeaders = new Headers();
-    //myHeaders.set("orgin", "https://www.fruityvice.com");
-    myHeaders.set("Access-Control-Allow-Origin", "https://jadynbug.github.io")
-    //myHeaders.set("orgin", "https://jadynbug.github.io/portfolio-WDD330/fruit/fruit.html");
-    myHeaders.set("orgin", "https://jadynbug.github.io");
-
-    const myRequest = new Request('https://www.fruityvice.com/api/fruit/all', {
-    method: 'GET',
-    headers: myHeaders,
-    mode: 'cors',
-    cache: 'default',
-    credentials: "include",
-    });
-
-    console.log(myRequest);
-
-    fetch(myRequest)
-    .then(response => {
-        const contentType = response.headers.get('content-type');
-        if (!contentType || !contentType.includes('application/json')) {
-          throw new TypeError("Oops, we haven't got JSON!");
-        }
-        return response.json();
-     })
-     .then(data => {
-          process your data further 
-     })
-     .catch(error => console.error(error));
-    /*.then((response) => {
-        if (!response.ok) {
-           return response.text().then(result => Promise.reject(new Error(result)));
-        }
-    
-        return response.json();
-    })
-    .then((response) => {
-        console.log(response);
-    });*/
-};
-
-class HttpClient {
-    constructor () {
-        this.get = function(aUrl, aCallback) {
-            var anHttpRequest = new XMLHttpRequest();
-            anHttpRequest.onreadystatechange = function() { 
-                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
-                    aCallback(anHttpRequest.responseText);
-            }
-            anHttpRequest.open( "GET", aUrl, true );   
-            anHttpRequest.setRequestHeader("content-type", "application/json");   
-            anHttpRequest.setRequestHeader("accept", "application/json");
-            anHttpRequest.setRequestHeader("orgin", "https://jadynbug.github.io/portfolio-WDD330/fruit/fruit.html");
-
-            anHttpRequest.setRequestHeader('Access-Control-Allow-Origin', "https://www.fruityvice.com/"); 
-            //anHttpRequest.onload(console.log(response));
-            console.log(anHttpRequest);  
-            anHttpRequest.send();
-        }
-    }
 }
