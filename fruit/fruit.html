@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>The BlueBerry Stand</title>
+        <title>The PokéBerry Stand</title>
         <link rel="stylesheet" href="./fruit.css">
     </head>
     <body>
@@ -11,28 +11,20 @@
             <h1>The PokéBerry Stand</h1>
         </header>
         <div id="options">
-            <div id="listMe" data-name="list" class="clicked">List of Fruit</div>
+            <div id="listMe" data-name="list" class="">List of Fruit</div>
             <div id="searchMe" data-name="search" class>Search Fruit</div>
             <div id="bowlMe" data-name="bowl" class>Fruit Bowl</div>
         </div>
         <div id="viewBox">
-            <div id="lister" data-name="list" class="container seen">
-                <ul>
-                    <li>
-                        Apple<button class="details-btn">details</button><button class="add">Add to Bowl</button>
-                        <div class="details-div">All the deets</div>
-                    </li>
-                    <li>
-                        Apple<button class="details-btn">details</button><button class="add">Add to Bowl</button>
-                        <div class="details-div">All the deets</div>
-                    </li>
-                </ul>
+            <div id="lister" data-name="list" class="container">
+                <ul></ul>
             </div>
             <div id="searcher" data-name="search" class="container">
-                search fruit
+                <input placeholder="Enter a pokéberry name" id="search-input"><button class="searching" id="searching">Search</button>
+                <ul></ul>
             </div>
             <div id="bowler" data-name="bowl" class="container">
-                bowl of fruit
+                bowler
             </div>
         </div>
         <script src="./fruit.js"></script>
