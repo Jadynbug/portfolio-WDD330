@@ -23,9 +23,11 @@ class View {
     setLister () {
         let stuff = renderLister(listOBerries2);
         document.querySelector("#lister ul").innerHTML = stuff;
-        let btnsD = document.querySelectorAll("#lister .details");
-        //needs more stuff!!!
         let btnsA = document.querySelectorAll("#lister .add");
+        btnsA.forEach((e) => {
+            e.addEventListener("click", addIt);
+        })        
+        let btnsD = document.querySelectorAll("#lister .details");
         btnsD.forEach((e) => {
             e.addEventListener("click", () => {
                 let name = e.parentNode.getAttribute("name");
@@ -47,9 +49,11 @@ class View {
         if (stuff != undefined) {
             document.querySelector("#searcher ul").innerHTML = stuff;
         }
-        let btnsD = document.querySelectorAll("#searcher .details");
-        //needs more stuff!!!
         let btnsA = document.querySelectorAll("#searcher .add");
+        btnsA.forEach((e) => {
+            e.addEventListener("click", addIt);
+        })
+        let btnsD = document.querySelectorAll("#searcher .details");
         btnsD.forEach((e) => {
             e.addEventListener("click", () => {
                 let name = e.parentNode.getAttribute("name");
@@ -63,6 +67,24 @@ class View {
         
     }
 
+    setBowler () {
+        let stuff = renderBowler();
+        if (stuff != undefined) {
+            document.querySelector("#bowler ul").innerHTML = stuff;
+        }
+        else {
+            document.querySelector("#bowler ul").innerHTML = "";
+        }
+        let btnsR = document.querySelectorAll("#bowler .remove");
+        btnsR.forEach((e) => {
+            e.addEventListener("click", removeIt)});        
+        let btnsE = document.querySelectorAll("#bowler .eat");
+        btnsE.forEach((e) => {
+            e.addEventListener("click", removeIt)});
+        
+    }   
+ 
+
     
     render() {
         let filter = document.querySelector(".seen").id;
@@ -75,6 +97,7 @@ class View {
         }
         if (filter == "bowler") {
             console.log("preparing bowler");
+            this.setBowler();
         }
         console.log("rendering");
     }
@@ -172,23 +195,26 @@ function renderSearcher () {
         return content2;
     }
 }
+
 function renderBowler () {
     //need fixing
     let content;
-    listOBerries2.forEach(element => {
-        let mess = `<li class="berry" name="${element.name}"><h2>${element.name}</h2>
-            <button class="details round">Details</button><button class="add round">
-            Add to berry bowl</button>
-            <div class="details-div ${element.name} no-see-flex">
-            <h3>${element.fullName}</h3>
-            <p>Size: ${element.size}</p>
-            <p>Smoothness: ${element.smoothness}</p>
-            </div></li>`
-        content += mess;
-        console.log(mess);
-    });
-    return content;
+    if (bowlOBerries .length > 0 && bowlOBerries != undefined) {
+        bowlOBerries.forEach(element => {
+            let mess = `<li class="berry" name="${element.name}"><h2>${element.name}</h2>
+                <button class="remove round">Remove berry</button><button class="eat round">
+                Eat berry</button></li>`
+            content += mess;
+            console.log(mess);
+        });
+    }
+    console.log(content);
+    if (content != undefined) {
+        let content2 = content.slice(9, -1);
+        return content2;
+    }
 }
+
 function searchIt () {
     console.log("searching, searching");
     searchOBerries = [];
@@ -199,6 +225,31 @@ function searchIt () {
             searchOBerries.push(berry);
         }
     })
+    start.v.render();
+}
+function addIt (e) {
+    console.log("adding, adding");
+    let term = e.target.parentNode.getAttribute("name");
+    console.log(e);
+    console.log(term);
+    listOBerries2.forEach((berry) => {
+        if (term == berry.name) {
+            bowlOBerries.push(berry);
+        }
+    })
+    console.log(bowlOBerries);
+}
+function removeIt (e) {
+    console.log("removing, removing");
+    console.log(e);
+    let term = e.target.parentNode.getAttribute("name");
+    console.log(term);
+    let index = bowlOBerries.findIndex((x) => x.name === term);
+    bowlOBerries.splice(index, 1);
+        
+    console.log('removed ' + term + ' from berryBowl');
+    console.log(bowlOBerries);
+    //writeToLS(key, toDoList);
     start.v.render();
 }
 
