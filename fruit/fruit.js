@@ -5,6 +5,7 @@ let listOBerries1 = [];
 let listOBerries2 = [];
 let searchOBerries = [];
 let bowlOBerries = [];
+let key = "berryTest";
 
 class Model {
     constructor(name, fullname, size, smoothness) {
@@ -31,11 +32,9 @@ class View {
         btnsD.forEach((e) => {
             e.addEventListener("click", () => {
                 let name = e.parentNode.getAttribute("name");
-                console.log(name);
                 let n = document.querySelector(`.${name}`);
                 n.classList.toggle("see-flex");
                 n.classList.toggle("no-see-flex");
-                console.log(n, n.classList);
             })
         })
     }
@@ -43,9 +42,7 @@ class View {
     setSearcher () {
         let e = document.getElementById("searching");
         e.addEventListener("click", searchIt);
-        console.log(e);
         let stuff = renderSearcher(searchOBerries);
-        console.log(stuff);
         if (stuff != undefined) {
             document.querySelector("#searcher ul").innerHTML = stuff;
         }
@@ -57,11 +54,9 @@ class View {
         btnsD.forEach((e) => {
             e.addEventListener("click", () => {
                 let name = e.parentNode.getAttribute("name");
-                console.log(name);
                 let n = document.querySelector(`.${name}`);
                 n.classList.toggle("see-flex");
                 n.classList.toggle("no-see-flex");
-                console.log(n, n.classList);
             })
         })
         
@@ -92,11 +87,9 @@ class View {
             this.setLister();
         }
         if (filter == "searcher") {
-            console.log("preping searcher");
             this.setSearcher();
         }
         if (filter == "bowler") {
-            console.log("preparing bowler");
             this.setBowler();
         }
         console.log("rendering");
@@ -150,7 +143,6 @@ class Controller {
                         listOBerries2.push(item);
                     })
                 })
-                console.log(listOBerries2);                
             });
     }
 }
@@ -197,7 +189,7 @@ function renderSearcher () {
 }
 
 function renderBowler () {
-    //need fixing
+    bowlOBerries = readFromLS(key);
     let content;
     if (bowlOBerries .length > 0 && bowlOBerries != undefined) {
         bowlOBerries.forEach(element => {
@@ -208,7 +200,6 @@ function renderBowler () {
             console.log(mess);
         });
     }
-    console.log(content);
     if (content != undefined) {
         let content2 = content.slice(9, -1);
         return content2;
@@ -228,28 +219,24 @@ function searchIt () {
     start.v.render();
 }
 function addIt (e) {
+    bowlOBerries = readFromLS(key);
     console.log("adding, adding");
     let term = e.target.parentNode.getAttribute("name");
-    console.log(e);
-    console.log(term);
     listOBerries2.forEach((berry) => {
         if (term == berry.name) {
             bowlOBerries.push(berry);
         }
     })
-    console.log(bowlOBerries);
+    writeToLS(key, bowlOBerries);
 }
 function removeIt (e) {
     console.log("removing, removing");
-    console.log(e);
     let term = e.target.parentNode.getAttribute("name");
-    console.log(term);
     let index = bowlOBerries.findIndex((x) => x.name === term);
     bowlOBerries.splice(index, 1);
         
     console.log('removed ' + term + ' from berryBowl');
-    console.log(bowlOBerries);
-    //writeToLS(key, toDoList);
+    writeToLS(key, bowlOBerries);
     start.v.render();
 }
 
