@@ -220,23 +220,40 @@ function searchIt () {
 }
 function addIt (e) {
     bowlOBerries = readFromLS(key);
-    console.log("adding, adding");
+    let b = "";
     let term = e.target.parentNode.getAttribute("name");
     listOBerries2.forEach((berry) => {
         if (term == berry.name) {
             bowlOBerries.push(berry);
+            b = berry.fullName;
         }
     })
+    let x = document.getElementById("snackbar");
+    x.innerHTML = `Added ${b} to berry bowl`
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+
     writeToLS(key, bowlOBerries);
 }
 function removeIt (e) {
     console.log("removing, removing");
     let term = e.target.parentNode.getAttribute("name");
     let index = bowlOBerries.findIndex((x) => x.name === term);
+    let b = bowlOBerries[index].fullName;
     bowlOBerries.splice(index, 1);
         
     console.log('removed ' + term + ' from berryBowl');
     writeToLS(key, bowlOBerries);
+    let x = document.getElementById("snackbar");
+    if (e.target.classList.contains("eat")) {
+        x.innerHTML = `Ate ${b}. Yumm!`
+
+    } else if (e.target.classList.contains("remove")) {
+        x.innerHTML = `Removed ${b} from berry bowl`
+
+    }
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     start.v.render();
 }
 
