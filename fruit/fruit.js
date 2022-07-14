@@ -32,33 +32,39 @@ class View {
         btnsD.forEach((e) => {
             e.addEventListener("click", () => {
                 let name = e.parentNode.getAttribute("name");
-                let n = document.querySelector(`.${name}`);
-                n.classList.toggle("see-flex");
-                n.classList.toggle("no-see-flex");
+                let n = document.querySelector(`[name="${name}"]`);
+                n.classList.toggle("bigger");
             })
         })
     }
 
     setSearcher () {
+        document.querySelector("#searcher ul").innerHTML = "";
         let e = document.getElementById("searching");
         e.addEventListener("click", searchIt);
         let stuff = renderSearcher(searchOBerries);
         if (stuff != undefined) {
             document.querySelector("#searcher ul").innerHTML = stuff;
-        }
-        let btnsA = document.querySelectorAll("#searcher .add");
-        btnsA.forEach((e) => {
-            e.addEventListener("click", addIt);
-        })
-        let btnsD = document.querySelectorAll("#searcher .details");
-        btnsD.forEach((e) => {
-            e.addEventListener("click", () => {
-                let name = e.parentNode.getAttribute("name");
-                let n = document.querySelector(`.${name}`);
-                n.classList.toggle("see-flex");
-                n.classList.toggle("no-see-flex");
+            let btnsA = document.querySelectorAll("#searcher .add");
+            btnsA.forEach((e) => {
+                e.addEventListener("click", addIt);
             })
-        })
+            let btnsD = document.querySelectorAll("#searcher .details");
+            btnsD.forEach((e) => {
+                e.addEventListener("click", () => {
+                    console.log("click");
+                    let name = e.parentNode.getAttribute("name");
+                    let n = document.querySelector(`[name="${name}"]`);
+                    console.log(n);
+                    n.classList.toggle("bigger");
+                    console.log(n.classList);
+                })
+            })
+        }
+        else {
+            document.querySelector("#searcher ul").innerHTML = "";
+        }
+        
         
     }
 
@@ -155,7 +161,7 @@ function renderLister () {
         let mess = `<li class="berry" name="${element.name}"><h2>${element.name}</h2>
             <button class="details round">Details</button><button class="add round">
             Add to berry bowl</button>
-            <div class="details-div ${element.name} no-see-flex">
+            <div class="details-div ${element.name}">
             <h3>${element.fullName}</h3>
             <p>Size: ${element.size}</p>
             <p>Smoothness: ${element.smoothness}</p>
@@ -172,7 +178,7 @@ function renderSearcher () {
         let mess = `<li class="berry" name="${element.name}"><h2>${element.name}</h2>
             <button class="details round">Details</button><button class="add round">
             Add to berry bowl</button>
-            <div class="details-div ${element.name} no-see-flex">
+            <div class="details-div ${element.name}">
             <h3>${element.fullName}</h3>
             <p>Size: ${element.size}</p>
             <p>Smoothness: ${element.smoothness}</p>

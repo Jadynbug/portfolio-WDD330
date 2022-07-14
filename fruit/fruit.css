@@ -35,7 +35,6 @@ button {
 }
 button:active {
   transform: scale(1.01);
-  border: solid white 2px;
 }
 
 #options {
@@ -147,6 +146,7 @@ ul {
 }
 
 .details-div {
+  display: flex;
   justify-content: space-around;
   align-items: center;
   grid-column: span 3;
@@ -158,12 +158,14 @@ li * {
   justify-self: center;
 }
 
-.see-flex {
-  display: flex;
+.berry {
+  height: 40px;
+  transition: height 1s linear;
+  overflow: hidden;
 }
 
-.no-see-flex {
-  display: none;
+.bigger, .show {
+  height: 80px;
 }
 
 #snackbar {
@@ -171,6 +173,7 @@ li * {
   /* Hidden by default. Visible on click */
   min-width: 250px;
   /* Set a default minimum width */
+  height: 30px;
   margin-left: -125px;
   /* Divide value of min-width by 2 */
   background-color: #333;
