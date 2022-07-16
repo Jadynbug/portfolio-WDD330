@@ -45,7 +45,7 @@ const links = [
     },
     {
         label: "week 12 notes",
-        url: "w12\\w12-index.html"
+        url: "W12\\W12-index.html"
     },
     {
         label: "week 13 notes",
