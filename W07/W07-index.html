@@ -163,7 +163,8 @@
                 You can also do stuff with headers. I don't really get why you would do anything with them, but heres an example:
                 <pre>
                     const url = 'https:example.com/data';
-                    const headers = new Headers({ 'Content-Type': 'text/plain', 'Accept-Charset' : 'utf-8', 'Accept-Encoding':'gzip,deflate' })
+                    const headers = new Headers({ 'Content-Type': 'text/plain', 
+                        'Accept-Charset' : 'utf-8', 'Accept-Encoding':'gzip,deflate' })
 
                     const request = (url,{
                         headers: headers
@@ -174,7 +175,8 @@
                                                 return response;
                                             }
                                             throw Error(response.statusText);
-                                        }).then( response => // do something with response ).catch( error => console.log('There was an error!') )
+                                        }).then( response => // do something with response )
+                                        .catch( error => console.log('There was an error!') )
                 </pre>
             </p></li>
             
